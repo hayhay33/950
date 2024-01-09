@@ -3,11 +3,17 @@ layout: spec
 latex: true
 ---
 
-# Engineering 100-980 “Rocket Science” Fall 2023
+# Engineering 100-950 “Atmospheric and Space Sensors” Winter 2024
 
 ## Course Overview
 
-In this section of ENGR100, we will focus on Rocket Science - learning about orbital mechanics, different types of rocket engines, and the basics of interplanetary travel. We will learn how to solve Newton's Laws on a computer and how large simulation software works. Labs will build on each other to provide a foundation for the team project, which will focus on asteroid mitigation.
+Constantly, far above us, the atmosphere is a flurry of activity, as shifting temperature and pressure gradients create streams and eddies of air. We have a vast array of surface measurements of winds, pressures, and temperatures, but it is quite difficult to get measurements of the atmosphere above the surface. One way to accomplish this is with high-altitude balloons.
+
+The National Weather Service launches approximately 200 high-altitude balloons twice every day to take measurements through the atmosphere. These mobile laboratories collect data on wind speed and direction, temperature, pressure, humidity, and can even measure parameters on the ground from high by taking and interpreting pictures from tens of thousands of feet up.
+
+Over the course of the semester, we will design, build, test, and launch such a system by attaching a gamut of sensors to a printed circuit board (PCB). The sensors will output their data to the brain of our system, an Arduino Nano microprocessor, which we will program to accept, process and store incoming data.
+
+We will develop testing protocols for the system, to ensure that it will function nominally during the launch. We will document these tests and explain our reasoning for conducting them. Finally, we will launch our balloons, and recover our payload for analysis. We will create graphs of our results and describe what they mean.
 
 ### Course Objectives
 
@@ -21,13 +27,13 @@ You enrolled in a course with lectures, a discussion, and a lab. Your discussion
 
 | Class | Time | Location |
 | ----- | ---- | -------- |
-| **Lecture (980)** | TuTh 3:00-4:30 | 1017 DOW |
-| Lab (981) | W 3:30-5:30 | 1225 CSRB |
-| Discussion (982) | W 2:30-3:30 | 1008 EECS |
-| Lab (983) | Th 12:30-2:30 | 1225 CSRB |
-| Discussion (984) | W 12:30-1:30 | 1018 DOW |
-| Lab (985) | W 12:30-2:30 | 1225 CSRB |
-| Discussion (986) | W 11:30-12:30 | 1018 DOW |
+| **Lecture (950)** | TuTh 3:00-4:30 | 1303 EECS |
+| Lab (951) | W 3:30-5:30 | 1225 CSRB |
+| Discussion (952) | W 2:30-3:30 | 1008 EECS |
+| Lab (953) | Th 12:30-2:30 | 1225 CSRB |
+| Discussion (954) | W 12:30-1:30 | 1018 DOW |
+| Lab (955) | W 12:30-2:30 | 1225 CSRB |
+| Discussion (956) | W 11:30-12:30 | 1018 DOW |
 
 ### Instructor Information
 
@@ -36,13 +42,12 @@ Here is contact information for all the course staff. If you have a question tha
 | Instructor | Contact  | Office Hours |
 | ---------- | -------- | ------------ |
 | Prof. Aaron Ridley<br>Technical lead  | <ridley@umich.edu><br>1416 CSRB | During All Labs |
-| Dr. Alan Hogg <br> Communication Instructor - lead | <alanhogg@umich.edu> <br> 307 GFL (or zoom) |Tue/Thu 1:30 - 2:30 PM |
-| Dr. Evan Radeen <br> Communication Instructor - lead | eradeen@umich.edu <br> zoom! | Mon 10-11 AM <br> Fri 11 AM - 12 noon|
-| Eric Andrechek <br> IA| ericandr@umich.edu <br>1210 CSRB | Mon 12:30 - 2:30 PM|
-| Hannah Barnard <br> IA| hbarnard@umich.edu <br> 1210 CSRB | Tue 4 - 6 PM|
-| Yichen Wang <br> IA| yicmwang@umich.edu <br>1210 CSRB | Tue 10 AM - 12 noon |
-| Jack Woods <br> IA| jfwoods@umich.edu <br> 1210 CSRB | Tue 2 - 3 PM <br> Thu 4:30 - 5:30 PM |
-| Ben Miller <br> IA| benjamen@umich.edu <br> 1210 CSRB | Mon 2:30 - 4:30 PM |
+| Dr. Alan Hogg <br> Communication Instructor - lead | <alanhogg@umich.edu> <br> 307 GFL (or zoom) | |
+| Dr. David Greenspan <br> Communication Instructor - lead |  <br> zoom! | |
+| Hannah Barnard <br> IA| hbarnard@umich.edu <br> 1210 CSRB | |
+| Yichen Wang <br> IA| yicmwang@umich.edu <br>1210 CSRB | |
+| Jack Woods <br> IA| jfwoods@umich.edu <br> 1210 CSRB | |
+| Ben Miller <br> IA| benjamen@umich.edu <br> 1210 CSRB | |
 
 ### Office Hours
 
@@ -53,7 +58,7 @@ Office hours are a chance to get to know the course staff, to get clarification 
 
 ## Canvas & Course Resources
 
-We will use Canvas as our main online portal for this course. Canvas is the Learning Management System (LMS) of choice for U-M. Canvas should be your starting point – all other resources are linked from there, and Canvas will remind you about assignments and due dates. Make sure you are set up to receive course announcements on Canvas, since we will post critical information there. Also, monitor your “to do” list on Canvas for reminders about all assignments except some minor in-class activities. Many of your homework assignments will be on Canvas also. Yeah, Canvas. Pay attention there!
+We will use Canvas as our main online portal for this course. Canvas is the Learning Management System (LMS) of choice for U-M. Canvas should be your starting point – all other resources are linked from there, and Canvas will remind you about assignments and due dates. Also, monitor your “to do” list on Canvas for reminders about all assignments except some minor in-class activities. Many of your homework assignments will be on Canvas also. Yeah, Canvas. Pay attention there!
 
 ## Working with Teams
 
@@ -88,7 +93,7 @@ These assignment types are described in more detail in the next sections.  
 
 ### Exams
 
-**There will not be any exams.**
+**There are no exams.**
 
 ### Assignment Submission
 
@@ -120,7 +125,7 @@ Late assignments will be docked 10% per day for up to 10 days. There are excepti
 - PDR, Go/No-Go, Final Poster, Final Report
 - Team Surveys
 Late assignment exceptions will be made for:
-- Students register for classes late for assignments due in the month of September. 
+- Students register for classes late for assignments due in the month of January. 
 
 ### Grading
 
