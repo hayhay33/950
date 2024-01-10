@@ -29,31 +29,31 @@ You enrolled in a course with lectures, a discussion, and a lab. Your discussion
 | ----- | ---- | -------- |
 | **Lecture (950)** | TuTh 3:00-4:30 | 1303 EECS |
 | Lab (951) | W 3:30-5:30 | 1225 CSRB |
-| Discussion (952) | W 2:30-3:30 | 1008 EECS |
+| Discussion (952) | W 2:30-3:30 | 1690 BEYSTER
 | Lab (953) | Th 12:30-2:30 | 1225 CSRB |
-| Discussion (954) | W 12:30-1:30 | 1018 DOW |
+| Discussion (954) | W 12:30-1:30 | 2166 DOW |
 | Lab (955) | W 12:30-2:30 | 1225 CSRB |
-| Discussion (956) | W 11:30-12:30 | 1018 DOW |
+| Discussion (956) | W 11:30-12:30 | 104 EWRE |
 
 ### Instructor Information
 
 Here is contact information for all the course staff. If you have a question that might be relevant to others, **please use the course Slack workspace first**. Otherwise, please do email us with any questions or concerns that you have about class. We’re very happy to set up one-on-one meetings.
 
-| Instructor | Contact  | Office Hours |
-| ---------- | -------- | ------------ |
-| Prof. Aaron Ridley<br>Technical lead  | <ridley@umich.edu><br>1416 CSRB | During All Labs |
-| Dr. Alan Hogg <br> Communication Instructor - lead | <alanhogg@umich.edu> <br> 307 GFL (or zoom) | |
-| Dr. David Greenspan <br> Communication Instructor - lead |  <br> zoom! | |
-| Hannah Barnard <br> IA| hbarnard@umich.edu <br> 1210 CSRB | |
-| Yichen Wang <br> IA| yicmwang@umich.edu <br>1210 CSRB | |
-| Jack Woods <br> IA| jfwoods@umich.edu <br> 1210 CSRB | |
-| Ben Miller <br> IA| benjamen@umich.edu <br> 1210 CSRB | |
+| Instructor | Contact  |
+| ---------- | -------- |
+| Prof. Aaron Ridley<br>Technical lead  | <ridley@umich.edu><br>1416 CSRB |
+| Dr. Alan Hogg <br> Communication Instructor - lead | <alanhogg@umich.edu> <br> 307 GFL |
+| Dr. David Greenspan <br> Communication Instructor - lead |  davidgrs@umich.edu <br> GFL |
+| Hannah Barnard <br> IA| hbarnard@umich.edu <br> 1210 CSRB |
+| Yichen Wang <br> IA| yicmwang@umich.edu <br>1210 CSRB |
+| Jack Woods <br> IA| jfwoods@umich.edu <br> 1210 CSRB |
+| Ben Miller <br> IA| benjamen@umich.edu <br> 1210 CSRB |
 
 ### Office Hours
 
 Office hours are a chance to get to know the course staff, to get clarification on concepts presented in class, and get encouragement on homework and labs. Extensive office hours will be held throughout the semester. In person office hours are posted above.
 
-**For an up-to-date listing of office hours, always refer to the week’s agenda on Canvas.**
+**For an up-to-date listing of office hours, always refer the google calendar!**
 [There is a google calendar available here.](https://calendar.google.com/calendar/u/0?cid=dW1pY2guZWR1X3FranB0bnZjNGs5MXA0dDQ4dXExOGFoNWNzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20)
 
 ## Canvas & Course Resources
@@ -140,6 +140,8 @@ A breakdown of the grading for this class is shown in the table below:
 | Team technical communication       |             |
 | **Total**                          |     **000**    |
 
+We are working on assignments.  They will all be listed on Canvas!
+
 In general, the grading is close to 50/50 technical and tech comm and 50/50 individual and group. Certain assignments may be technical only, and some assignments may be tech comm only. Final letter grades will be assigned at the end of term and will be based on the points you have earned vs. the total points available in the class. We will grade on a “straight scale”:
 
 |                       |                  |
@@ -189,7 +191,7 @@ TL;DR: Reach out if you need help.
 
 ## General Observations and Advice
 
-We have taught Engr 100 for a *long time* now. Here are some tips that will help you be less frustrated:
+We have taught Engr 100 for a bit now. Here are some tips that will help you be less frustrated:
 
 - The weekly prep work will cover the lab concepts before lab. However, the lab documents will be available alongside the weekly prep work to allow you to read the material before the lecture.
 - Make sure you are clear on which assignments are to be done individually and which are to be done in a group. If you have any questions concerning the nature of an assignment, ask your instructors.
