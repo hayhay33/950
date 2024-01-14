@@ -7,7 +7,7 @@ latex: true
 
 ## Contents
 
-- [Lab 5: Designing a PCB using Altium Designer](#lab-7-designing-a-pcb-using-altium-designer)
+- [Lab 5: Designing a PCB using Altium Designer](#lab-5-designing-a-pcb-using-altium-designer)
   - [Contents](#contents)
   - [Introduction](#introduction)
   - [Participation](#participation)
