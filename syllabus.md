@@ -43,11 +43,11 @@ Here is contact information for all the course staff. If you have a question tha
 | ---------- | -------- |
 | Prof. Aaron Ridley<br>Technical lead  | <ridley@umich.edu><br>1416 CSRB |
 | Dr. Alan Hogg <br> Communication Instructor - lead | <alanhogg@umich.edu> <br> 307 GFL |
-| Dr. David Greenspan <br> Communication Instructor - lead |  davidgrs@umich.edu <br> GFL |
-| Hannah Barnard <br> IA| hbarnard@umich.edu <br> 1210 CSRB |
-| Yichen Wang <br> IA| yicmwang@umich.edu <br>1210 CSRB |
-| Jack Woods <br> IA| jfwoods@umich.edu <br> 1210 CSRB |
-| Ben Miller <br> IA| benjamen@umich.edu <br> 1210 CSRB |
+| Dr. David Greenspan <br> Communication Instructor - lead |  <davidgrs@umich.edu> <br> GFL |
+| Hannah Barnard <br> IA| <hbarnard@umich.edu> <br> 1210 CSRB |
+| Yichen Wang <br> IA| <yicmwang@umich.edu> <br>1210 CSRB |
+| Jack Woods <br> IA| <jfwoods@umich.edu> <br> 1210 CSRB |
+| Ben Miller <br> IA| <benjamen@umich.edu> <br> 1210 CSRB |
 
 ### Office Hours
 
