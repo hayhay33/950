@@ -3,11 +3,11 @@ layout: spec
 latex: true
 ---
 
-# Lab 5: Acceleration & Pressure
+# Lab 4: Acceleration & Pressure
 
 ## Contents
 
-- [Lab 5: Acceleration \& Pressure](#lab-5-acceleration--pressure)
+- [Lab 4: Acceleration \& Pressure](#lab-5-acceleration--pressure)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
