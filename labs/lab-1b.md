@@ -156,12 +156,12 @@ them.
 
 ## Submission
 
-On Canvas, you will submit ***ONE PDF/PNG*** that will include all of the following:
+On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
 - [ ] A screenshot of the schematic you made, which should look much like the example provided earlier.
 
-Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE.**
+Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE**.
 
 <div class="primer-spec-callout danger" markdown="1">
-Submitting anything other than a single PDF/PNG may result in your work not being graded or your scores being heavily delayed.
+Submitting anything other than a single PDF may result in your work not being graded or your scores being heavily delayed.
 </div>
