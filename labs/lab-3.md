@@ -7,7 +7,7 @@ latex: true
 
 ## Contents
 
-- [Lab 2: Temperature Sensing](#lab-3-temperature-sensing)
+- [Lab 2: Temperature Sensing](#lab-2-temperature-sensing)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
