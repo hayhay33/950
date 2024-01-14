@@ -7,7 +7,7 @@ latex: true
 
 ## Contents
 
-- [Lab 3: Creating a Standalone Arduino](#lab-4-creating-a-standalone-arduino)
+- [Lab 3: Creating a Standalone Arduino](#lab-3-creating-a-standalone-arduino)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
