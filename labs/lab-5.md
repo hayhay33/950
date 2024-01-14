@@ -7,7 +7,7 @@ latex: true
 
 ## Contents
 
-- [Lab 4: Acceleration \& Pressure](#lab-5-acceleration--pressure)
+- [Lab 4: Acceleration \& Pressure](#lab-4-acceleration--pressure)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
