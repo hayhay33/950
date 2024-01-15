@@ -127,20 +127,26 @@ The concept of the voltage divider can be extended to any number of resistors. T
 4. To see the data sent from the Arduino to the computer, open the Serial monitor inside of the Arduino IDE. This can be done by clicking the magnifying glass in the top, left-hand corner of the IDE.
   - At the bottom of the Serial monitor, make sure the baud rate is set at 9600 to match the Arduino.
   - Record the value returned by `analogRead()`, as you’ll need it later.
-5. Build a voltage divider by setting $$V_{in}$$ as the 5V line of the Arduino, have $$R_1$$ be 1k$$\Omega$$ and $$R_2$$ be 1k$$\Omega$$.
+5. Unplug the Arduino from the computer.
+6. While the Arduino is not plugged into the computer, unplug the 5V side of the wire from A1 to 5V and plug it into ground (GND). ** Make sure that the new connection is from A1 to GND!!!** (Not 5V to GND - this would be very very bad!)
+7. Verify that the connection in step-6 is from A1 to GND.
+8. Reconnect the Arduino to the computer and open the serial monitor.  What is the new value that is reported to the screen.  Record this value.
+9. Unplug the Arduino from the computer.
+10. Build a voltage divider by setting $$V_{in}$$ as the 5V line of the Arduino, have $$R_1$$ be 1k$$\Omega$$ and $$R_2$$ be 1k$$\Omega$$.
   - Plug $$V_{out}$$ into A1 of the Arduino.
   - Resistance is denoted by a band color code, which you should get used to reading. Check the chart in [resources](/resources#resistor-color-codes) for info and data on how to read resistances of resistors using their colors.
   - Our code uses the `analogRead()` function to read in the voltage and record the raw number that the function returns.
-1. Try playing with various resistor values, and take down the values from two more combinations of resistors. Make sure to write down the resistor combinations as well as the analog output for both of your additional experiments.
-2. Come up with a combination of resistors that will result in an output voltage of less than 1.25V.
+11. Try playing with various resistor values, and take down the values from two more combinations of resistors. Make sure to write down the resistor combinations as well as the analog output for both of your additional experiments.
+12. Come up with a combination of resistors that will result in an output voltage of less than 1.25V.
   - You can convert the raw output from `analogRead()` into voltage values by multiplying by 5/1023.
   - You will learn why in lab 3! Try it and see if it works.
 
 ## Post-Lab Questions
 
 1. Write a short blurb explaining what your peer changed on your breadboard and why you think this would cause it to not work as normal (or, why you think their change would not have impacted anything).
-2. What combination of resistors did you use to get to less than 1.25V at the analog pin in step 3.7? Draw them in a circuit and upload/attach a picture of this circuit to make it clear where you put the resistors.
-3. Using three resistors in series, draw a voltage divider circuit with two $$V_{out}$$s (one between resistors 1 and 2 and one between resistors 2 and 3). $$V_{out1}$$ should be equal to $$\frac{2}{3} V_{in}$$ and $$V_{out2}$$ should be equal to $$\frac{1}{3} V_{in}$$. Give possible values those resistors could take. What would happen if we doubled the value of all of the resistors?
+2. When the Arduino A1 pin was connected to 5V, what was the reading from AnalogRead? When the Arduino A1 pin was connected to GND (0V), what was the reading?  Do these make sense?  Why?
+3. What combination of resistors did you use to get to less than 1.25V at the analog pin in step 3.7? Draw them in a circuit and upload/attach a picture of this circuit to make it clear where you put the resistors.
+4. Using three resistors in series, draw a voltage divider circuit with two $$V_{out}$$s (one between resistors 1 and 2 and one between resistors 2 and 3). $$V_{out1}$$ should be equal to $$\frac{2}{3} V_{in}$$ and $$V_{out2}$$ should be equal to $$\frac{1}{3} V_{in}$$. Give possible values those resistors could take. What would happen if we doubled the value of all of the resistors?
 
 <div class="primer-spec-callout info" markdown="1">
 Hint: Resistors in series add together.  So, if you have three resistors that are each 100$$\Omega$$, and measured the voltage between the first and second resistors, the voltage divider circuit would have 100$$\Omega$$ on one side and 200$$\Omega$$ on the other side.
@@ -152,8 +158,8 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
 - [ ] A picture of your breadboard with an external LED on it being lit up while plugged into an Arduino.
 - [ ] A photo of your breadboard (unplugged from your computer) in its broken state.
-- [ ] Written post-lab answers for questions 1-3.
-- [ ] 2 circuit diagrams (i.e., schematics) in total for post-lab questions 2 and 3.
+- [ ] Written post-lab answers for questions 1-4.
+- [ ] 2 circuit diagrams (i.e., schematics) in total for post-lab questions 3 and 4.
 
 To put said content into a PDF, it is suggested you create a new Google Doc and paste your images and write your text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE.**
 
