@@ -74,10 +74,10 @@ This sensor is rather simple to interface with. When the temperature changes, th
 
 ### 2. Uploading the Code
 
-Once your TMP36 is plugged in to your Arduino Nano, go to File → Examples → ENGR100-980 → Lab3-TMP36.
+Once your TMP36 is plugged in to your Arduino Nano, go to File → Examples → ENGR100-980 → Lab2-TMP36.
 
 <div class="primer-spec-callout info" markdown="1">
-If Lab3's example script does not show up, your library may be out of date. To update it, first try restarting the Arduino IDE. If this doesn't work, try following the same steps you took to install the library to update it.
+If Lab 2's example script does not show up, your library may be out of date. To update it, first try restarting the Arduino IDE. If this doesn't work, try following the same steps you took to install the library to update it.
 </div>
 
 You will need to modify the analog pin number you are reading off of for this lab. Unlike the last lab, where we provided a specific `#define` compiler variable for you to change the pin with at the top of the example script, this time, you will be changing the value yourself.
