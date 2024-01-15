@@ -44,7 +44,7 @@ latex: true
 
 ## Introduction
 
-This lab should be one of your easiest yet. By the end of the lab, you will have re-built your circuit from lab 4, and added an accelerometer and pressure sensor, as well as made calibration curves for each of the sensors.
+This lab should be one of your easiest yet. By the end of the lab, you will have re-built your circuit from lab 3, and added an accelerometer and pressure sensor, as well as made calibration curves for each of the sensors.
 
 Most of the time involved in this lab will be re-wiring what you have previously built, as well as working on calibrating your accelerometer and pressure sensors.
 
@@ -68,7 +68,7 @@ As mentioned in the introduction, this lab is not going to give you nearly as de
 
 To start, we are going to wire in a pressure sensor and calibrate it, and then an acceleration sensor and calibrate it. See the next 2 steps for more details about wiring each component.
 
-Plug your Arduino onto your breadboard and hook it up to your computer. These next 2 steps will have you doing calibrations on analog sensors, meaning we will be reading analog values over Serial. Was there a lab (maybe lab 3...) where we had start code to do exactly this that you could repurpose?
+Plug your Arduino onto your breadboard and hook it up to your computer. These next 2 steps will have you doing calibrations on analog sensors, meaning we will be reading analog values over Serial. Was there a lab (maybe lab 2...) where we had start code to do exactly this that you could repurpose?
 
 <div class="primer-spec-callout info" markdown="1">
 Note: Later in this lab we will ask for a picture of your finished circuit. Part of the requirements for this circuit are that one side of your breadboard's power rail is for 5V, one is for 3.3V, and both sides should have common ground. Additionally it is required that all power is routed with red jumper cables, all ground with black, and all data with other colors.
