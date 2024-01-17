@@ -3,23 +3,24 @@ layout: spec
 latex: true
 ---
 
-# Lab 3: Creating a Standalone Arduino
+# Lab 4: Acceleration & Pressure
 
 ## Contents
 
-- [Lab 3: Creating a Standalone Arduino](#lab-3-creating-a-standalone-arduino)
+- [Lab 4: Acceleration \& Pressure](#lab-4-acceleration--pressure)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
-    - [Arduino Power Requirements](#arduino-power-requirements)
-    - [Data Logging](#data-logging)
+    - [Pressure Sensor](#pressure-sensor)
+    - [Accelerometer](#accelerometer)
   - [Procedure](#procedure)
-    - [1. Powering the Arduino](#1-powering-the-arduino)
-    - [2. Measuring Battery Voltage](#2-measuring-battery-voltage)
-    - [3. Adding the TMP36](#3-adding-the-tmp36)
-    - [4. Adding the MicroSD Card Adapter Module](#4-adding-the-microsd-card-adapter-module)
+    - [1. Setup](#1-setup)
+    - [2. Pressure Sensor](#2-pressure-sensor)
+    - [3. Accelerometer](#3-accelerometer)
+    - [4. Putting It All Together](#4-putting-it-all-together)
     - [5. Collecting Data](#5-collecting-data)
     - [6. Analyzing the Data in Google Sheets (or Excel)](#6-analyzing-the-data-in-google-sheets-or-excel)
+  - [Wrap-Up and Conclusion](#wrap-up-and-conclusion)
   - [Submission](#submission)
 
 ## Materials
@@ -32,109 +33,117 @@ latex: true
 - [ ] 1 Data Logger
 - [ ] 1 MicroSD Card - USB Adapter
 - [ ] 2 1k$$\Omega$$ resistors
-- [ ] 12-ish jumper wires
-- [ ] 1 9V battery
-- [ ] 1 9V battery connector
-- [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
+- [ ] 5-ish Black Jumper Wires
+- [ ] 5-ish Red Jumper Wires
+- [ ] 10-ish Other Colored Jumper Wires
+- [ ] 1 9V Battery
+- [ ] 1 9V Battery Connector
+- [ ] 1 ADXL335 3-Axis Accelerometer
+- [ ] 1 MPX4115A Pressure Sensor
+- [ ] A Computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 
 ## Introduction
 
-So far, every time we have used our Arduino to log data, we have read the data through Arduino's Serial monitor, and have powered the Arduino via our computer's USB port. While this has worked so far, our end goal is to launch these Arduinos in rockets! We cannot use a computer for power and data logging for that!
+This lab should be one of your easiest yet. By the end of the lab, you will have re-built your circuit from lab 3, and added an accelerometer and pressure sensor, as well as made calibration curves for each of the sensors.
 
-This lab can be broken down into two main sections, one in which we learn to power the board via a battery and estimate the batteries capacity or charge, and one where we record Arduino sensor data onto a microSD card. At the end of this lab, you should have all the knowledge you need to make a fully portable temperature logger.
+Most of the time involved in this lab will be re-wiring what you have previously built, as well as working on calibrating your accelerometer and pressure sensors.
 
-### Arduino Power Requirements
+What this means for you is that we are slowly going to start making our instructions increasingly vague. By this point you should know how to wire up an analog sensor to your Arduino and how to find and run starter code.
 
-The Arduino Nanos that we use in this class operate at 5V logic. This means the pins coming off of it, like the digital pins, are all at 5Vs. The Arduino, however, has circuitry inside it that lets it take a range of voltages as input. This is called the Vin pin, and takes a voltage between 7-12V. The Arduino then internally converts that down to a safer 5V level for its own operations. For this lab, we will be powering our Arduino Nano with a 9V battery.
+### Pressure Sensor
 
-### Data Logging
+Our pressure sensor for this lab is what we will eventually be using to launch on our rocket. With some math and equations we will talk about in lecture, it is possible for us to estimate altitude based on pressure data, which will be useful for our rocket launch.
 
-Our Arduino has some memory on it, but reading and writing to this memory is a rather complicated procedure, which is why we need the Arduino IDE to handle writing the code to the Arduino's memory for us. Writing variables to the Arduino's memory is not user-friendly and is difficult to read back. Therefore, we elect to instead use a microSD card, which has a far higher data capacity and allows us to easily read data on our computer. This lab will use a pre-built data logging module to write data to the microSD card in a similar way you write data out to the Arduino's Serial monitor.
+### Accelerometer
+
+For this lab, we are using a 3-axis accelerometer. This sensor is capable of measuring acceleration in Gs on the x, y, and z planes.
+
+1 G is considered normal acceleration that we feel on Earth as exerted by gravity. It is equivalent to a magnitude of 9.8m/s<sup>2</sup>.
 
 ## Procedure
 
-### 1. Powering the Arduino
+### 1. Setup
 
-To start, we want to power our Arduino with the 9V battery. Plug your Arduino into your breadboard, and plug the 9V into it's connection clip. It should only fit on one way, as the 9V's two terminals are different shapes.
+As mentioned in the introduction, this lab is not going to give you nearly as detailed of instructions as previous labs have. Use your resources and refer to previous labs or references as needed if you are stuck on something!
 
-Notice that one wire coming out of the battery is red, and one is black. Common practice says that red will be positive, in this case +9V, and the black will be what we connect to our Arduino's GND.
+To start, we are going to wire in a pressure sensor and calibrate it, and then an acceleration sensor and calibrate it. See the next 2 steps for more details about wiring each component.
 
-Take these wires and plug them into your Arduino via your breadboard. Red should go to the Arduino's Vin, and black should go to any GND pin.
+Plug your Arduino onto your breadboard and hook it up to your computer. These next 2 steps will have you doing calibrations on analog sensors, meaning we will be reading analog values over Serial. Was there a lab (maybe lab 2...) where we had start code to do exactly this that you could repurpose?
 
-Once you've plugged the 9V in, the Arduino should light up - even though it isn't plugged into your computer! If it does, congrats, your external power is working! If not, check your connections again.
+<div class="primer-spec-callout info" markdown="1">
+Note: Later in this lab we will ask for a picture of your finished circuit. Part of the requirements for this circuit are that one side of your breadboard's power rail is for 5V, one is for 3.3V, and both sides should have common ground. Additionally it is required that all power is routed with red jumper cables, all ground with black, and all data with other colors.
+</div>
 
-As one last check that everything is working before we move on, upload the File → Examples → Basics → Blink code that the Arduino IDE comes with to your Arduino. After it finishes uploading, unplug your computer and verify that the onboard LED on the Arduino continues to blink on only the 9V's power.
+### 2. Pressure Sensor
 
-### 2. Measuring Battery Voltage
+In the real world of electrical and computer engineering, there most likely won't always be a tutorial to hold your hand and tell you how to wire up a component. As such, instead of *showing you* exactly how to wire up your pressure sensor, [here are the sensor's technical specs, which include wiring information on **page 9**](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1001/MPX4115A.pdf).
 
-Most modern electronics, from your smartphone to even rockets, have some way of reporting back the charge of any internal batteries. While we don't use the battery for very long at any one time in this lab, other people are using the same batteries, and so we do want to verify they are charged.
+Our sensor uses style 1 as listed in the docs. You should only need to connect three pins (Vout, Vin (5V), and GND). Since this is an analog sensor, connect Vout to an analog input pin on the Arduino, and run your code to get values you can use to calibrate the sensor.
 
-To measure battery voltage, we can use the analog pins on the Arduino, similar to how we did in lab 1. The caveat of this is, however, that the analog pins can **only take up to 5V!!** So, before reading the battery in, we need to build a voltage divider to step the battery voltage down to 5V max.
+Up until now we have been taking two very different measurements (like for the TMP36 temperature sensor) of both a room temperature reading and a very cold reading (like in the cold chamber) in order to build a calibration curve. Unfortunately, for the pressure sensor, it is hard for us to find two wildly different pressures. As such, we are letting you assume that at 0V the pressure is 0. You will need to measure another point and calculate the calibration curve for this sensor accordingly (for example, what does your weather app say the pressure is right now?). To be more precise about the 0 pressure being a 0V measurement, the spec sheet may provide more info, if you are interested.
 
-Using our voltage divider [(see the resources page for more)](/resources), we can take 2 1k resistors and step 9V down to 4.5V max. Go ahead and build this voltage divider.
+Copy your Google Sheet (or Excel file), record these calibration values and calculate your calibration curve.
 
-When you are done, your 9V battery should have the black wire going to GND, and the red wire going to **both** Vin **and** a voltage divider.
+### 3. Accelerometer
 
-Now, let's test that the voltages look about right. Go to File → Examples → Basics → AnalogReadSerial and change the `analogRead()` function called in `loop()` to be the pin you plugged your voltage divider into. Run this code and make note of the values it returns.
+The accelerometer is relatively straightforward to wire compared to the pressure sensor. All of the pinouts are clearly labelled on the sensor. You will wire GND to GND, X, Y, and Z each to its own analog pin on the Arduino, and **VCC to the 3V3 pin on the Arduino**.
 
-You know on the Arduino Nano this value will be between 0-1024, and that your max voltage, as reported by the Arduino, is 5V. Convert your raw value to the voltage the Arduino read by dividing it by 1023 and multiplying it by 5V. This is the voltage your Arduino recorded.
+<div class="primer-spec-callout warning" markdown="1">
+This accelerometer sensor takes 3.3V input, not 5V like everything else we have used so far. Plugging it into 5V can break the sensor or cause other bad and unintended things to happen!
+</div>
 
-Your battery, however, has a higher voltage than that. We now need to undo the effects of the voltage divider to determine the batteries original voltage. Since we used the same resistance on either side of the voltage divider, the voltage is being cut in half. Therefore, we can simply multiply the Arduino's recorded voltage by 2 to get the 9V battery's voltage. It should be somewhere between 8 and 10V.
+To read the number of Gs coming in on each axis, we will simply read the analog input for each axis pin. X, Y, and Z all should have their own analog pins to read off of. Make the necessary changes in your code so that you can read from these pins.
 
-### 3. Adding the TMP36
+When calibrating this sensor, we will use our understanding of what 1 G is to our advantage. You will need to pay careful attention to the small 3-axis figure printed on the sensor module. When the sensor is flat on the table, the Z-axis should be vertical, and the others will be parallel to the table/ground.
 
-Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino. Here is the wiring diagram again for your reference:
+In this orientation, the Z-axis is straight up and down and is therefore experiencing -1G. X and Y are both perpendicular to the force of gravity and would be recording 0Gs. If you turn your board upside down, the Z axis should read +1G. Rotate your sensor around as needed so that each axis has at least two data-points where it is (anti-)parallel to the force of gravity.
 
-[![TMP36 Pinout](https://cdn-learn.adafruit.com/assets/assets/000/000/471/large1024/temperature_tmp36pinout.gif?1447975787)](https://learn.adafruit.com/tmp36-temperature-sensor/overview)
+With this calibration process completed, each axis will have a calibration value of -1G and 1G. Record these values in your spreadsheet again, and calculate the calibration curve for each axis.
 
-### 4. Adding the MicroSD Card Adapter Module
+### 4. Putting It All Together
 
-Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
+With your calibration curves calculated for both new sensors, we will now begin putting everything together. You can refer to the procedure in the previous lab should you need help.
 
-![MicroSD Adapter Module Wiring](../media/SD-Card-Wiring.png){: .invert-colors-in-dark-mode }
+Again, note that as described earlier, there are organizational and color requirements for breadboard wiring this lab. This makes it easier for other people to quickly look at and understand, and will make things more organized when moving into Altium later.
 
-While your Arduino is powered off and disconnected from the 9V, plug your module in as shown above. The Arduino pins for this **DO** matter and cannot easily be changed, unlike the analog pins.
+To re-iterate these requirements, you need a 5V power rail on one side of the breadboard, a 3.3V power rail on the other side, and 2 GND rails on either side. Additionally, all the GND connections should use black wires, all the 5V and 3.3V should use red wires (it is also ok if 5V uses red and 3.3V uses say orange), and all data wires (like analog in and SD card connections) using another color not used by any of the power circuitry.
 
-Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-980 → Lab4-SD.
+The end result will be a temperature sensor, pressure sensor, accelerometer, and voltage divider all wired to an Arduino which stores data onto a microSD card and receives power via a 9V battery.
 
-Please read through the comments of this code file, as in the next lab, you will be adding additional sensors and modifying this file on your own, without it all done for you. In this lab, you may also need to change the analog pins that are the defaults for the TMP36 and voltage divider.
-
-There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
+Modify the code given for the previous lab to add your new sensors to the csv the Arduino outputs. You will need to modify the pins defined at the top of the file, and will need to add some column titles to the header string defined above the `setup()` function as well. You will also need to modify the code in `loop()` to include the sensor values in the string added each iteration.
 
 ### 5. Collecting Data
 
-With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into a freezer.  Wait for about 2-5 minutes to allow the temperature to adjust.
+With everything plugged into the 9V and running, unplug the Arduino from your computer. Walk around with your Arduino and try to think about things you can do to wildly influence the sensor values (without breaking your circuit!). More interesting changes will be more visible and easier to see in your final plots. (Question - will walking up 4 flights of stairs cause the pressure sensor to change?)
 
-Go back to the lab and unplug the 9V now (unplug the battery and leave the wires connected to your board). Carefully remove the microSD from the adapter module, and plug it into your computer. You should see a `DATALOG.CSV` file. If you do not, or the file seems corrupted or very small, delete the file, plug the microSD card back in, and watch what the Serial monitor on your computer says while running the code.
-
-Once you have a sufficiently long test (1-2 minutes) and can see that there are clear changes in temperature in the file created, you are done with the hardware portion of this lab!
-
-Before returning all of your equipment, make sure you save your file on your computer!! Maybe even upload it and share it with team members so you have a backup!
-
-Then, delete the .csv file and any other .txt files off of the microSD card (you can leave any folders) so that other teams in future labs have to actually do the lab themselves, and don't just steal your data!
+Now, before you jump ahead and start to dissemble your board, take a picture of it in its final working state! You will be submitting this!
 
 ### 6. Analyzing the Data in Google Sheets (or Excel)
 
-Go to a new Google Sheet ([sheets.new](https://sheets.new)) (or Excel file), and go to File → Import → Upload and choose the `DATALOG.CSV` file that your Arduino created.
+In your spreadsheet, upload the csv file that your Arduino created. Similar to the previous lab, you will need to add some new columns to calculate values.
 
-In the event your Arduino lost power or reset while running, you may have a header at places other than just the top of your spreadsheet. Go through and clean up any of these occurrences and delete their entire row.
+In addition to the columns your Arduino recorded, you will need a temperature (in C) column, a battery (in V) column, a pressure (hPa, mmHg, etc up to you), acceleration in X direction (Gs), acceleration in Y direction (Gs), acceleration in Z direction (Gs), and max acceleration (highest G-Force reading from any direction at each point in time) (Gs).
 
-Now, let's add some columns to the spreadsheet. Right now you should have Time (ms), TMP36 (Raw), and Voltage (Raw). Let's add "TMP36 (V)", "Voltage (5V)", "TMP36 (C)", and "Voltage (9V)".
+Graph temperature and pressure on the same graph compared to time. Since the Y-axis of this graph will have 2 different units, you may need to make sure your graph has a second Y-axis on the other side. Both graphs need to be labelled in a legend. Follow tech comm best practices when making the graph.
 
-In the first cell of each column, you will need to make a simple equation/formula to calculate the values based off of the raw sensor values the Arduino recorded. For example, for turning a raw TMP36 value into a TMP36 voltage, you would write "=(B2/1023)*5" in the TMP36 voltage cell on row 2. Then, click the blue circle in the bottom-right corner of this cell and drag it all the way down. This should now create an auto-calculated TMP36 voltage for each cell.
+Graph all (4) acceleration values on the same graph compared to time. All of the values are in Gs, so only one Y-axis is needed. Be sure to label each line with a legend, and follow tech comm best practices.
 
-Repeat this general process for each column, modifying the equations as needed. For converting TMP36 voltages into temperatures, use the same calibration curve you used in the prior lab.
+## Wrap-Up and Conclusion
 
-Now, we need to make some graphs to analyze the data. Each graph to make is detailed in its own submission checkbox. Make sure each graph follows tech-comm best-practices and includes a title, axis labels, units, and is clearly visible. For graphs with multiple values over-layed, ensure you have added a legend.
+Congratulations! You have made it through the bread-boarding portion of this class! We hope that you enjoyed your time with Arduinos and learned a thing or two.
+
+Moving forward, you are going to learn how to make 3D CAD (computer aided design) models and how to use Altium to build our Arduino breadboard circuits on a printed circuit board that can be soldered directly onto.
+
+All of this will give you the final skills you need for your teams to work together and assemble a package that you will build to launch on a model rocket!
 
 ## Submission
 
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
-- [ ] A plot of temperature (C) versus time. Time should be your independent variable.
-- [ ] A plot comparing 9V battery voltage to time. Time is again your independent variable.
-- [ ] A plot of both 5V reference variables versus time. Both 5V reference variables means both your TMP36's voltage, and your battery's voltage divider voltage (before being scaled up to the voltage pre-voltage divider).
-- [ ] A plot of both raw value variables versus time.
+- [ ] A screenshot of your calibration curves and data for both new sensors added. This should be 4 total calibration curves (1 from each axis of the accelerometer).
+- [ ] Your plot comparing temperature and pressure to time.
+- [ ] Your plot comparing max acceleration and acceleration on each axis to time.
+- [ ] A picture of your final breadboard with all the sensors connected and all of the power rail and wire color requirements satisfied.
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 

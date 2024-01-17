@@ -3,24 +3,23 @@ layout: spec
 latex: true
 ---
 
-# Lab 2: Temperature Sensing
+# Lab 3: Creating a Standalone Arduino
 
 ## Contents
 
-- [Lab 2: Temperature Sensing](#lab-2-temperature-sensing)
+- [Lab 3: Creating a Standalone Arduino](#lab-3-creating-a-standalone-arduino)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
-    - [How Analog to Digital Converters (ADCs) Work](#how-analog-to-digital-converters-adcs-work)
+    - [Arduino Power Requirements](#arduino-power-requirements)
+    - [Data Logging](#data-logging)
   - [Procedure](#procedure)
-    - [1. Wiring the TMP36](#1-wiring-the-tmp36)
-    - [2. Uploading the Code](#2-uploading-the-code)
-    - [3. Collecting Data](#3-collecting-data)
-    - [4. Making a Calibration Curve](#4-making-a-calibration-curve)
-    - [5. Modifying the Code](#5-modifying-the-code)
-    - [6. Field Trip Pt. 2](#6-field-trip-pt-2)
-  - [Post-Lab Questions](#post-lab-questions)
-  - [Memo](#memo)
+    - [1. Powering the Arduino](#1-powering-the-arduino)
+    - [2. Measuring Battery Voltage](#2-measuring-battery-voltage)
+    - [3. Adding the TMP36](#3-adding-the-tmp36)
+    - [4. Adding the MicroSD Card Adapter Module](#4-adding-the-microsd-card-adapter-module)
+    - [5. Collecting Data](#5-collecting-data)
+    - [6. Analyzing the Data in Google Sheets (or Excel)](#6-analyzing-the-data-in-google-sheets-or-excel)
   - [Submission](#submission)
 
 ## Materials
@@ -29,136 +28,116 @@ latex: true
 - [ ] 1 Breadboard
 - [ ] 1 Programming Cable (and adapters if necessary)
 - [ ] 1 TMP36 Temperature Sensor
-- [ ] A hand-full of jumper wires (it is possible to do the whole lab without any)
+- [ ] 1 MicroSD Card
+- [ ] 1 Data Logger
+- [ ] 1 MicroSD Card - USB Adapter
+- [ ] 2 1k$$\Omega$$ resistors
+- [ ] 12-ish jumper wires
+- [ ] 1 9V battery
+- [ ] 1 9V battery connector
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 
 ## Introduction
 
-[This video goes through how to set up the TMP36 and is very useful to watch before you get started.](https://www.youtube.com/watch?v=Mdx2m6hNuqc)
+So far, every time we have used our Arduino to log data, we have read the data through Arduino's Serial monitor, and have powered the Arduino via our computer's USB port. While this has worked so far, our end goal is to launch these Arduinos in rockets! We cannot use a computer for power and data logging for that!
 
-This lab represents the start of your journey into the development of your rocket's sensor board. Your board will measure an ensemble of variables, including temperature, pressure (to derive altitude), and acceleration vector. We will begin with the simplest, most visceral metric: temperature. This lab will introduce you to the temperature sensor associated with your sensor board.
+This lab can be broken down into two main sections, one in which we learn to power the board via a battery and estimate the batteries capacity or charge, and one where we record Arduino sensor data onto a microSD card. At the end of this lab, you should have all the knowledge you need to make a fully portable temperature logger.
 
-A **sensor** is a device that provides measurement of some environmental observable. Many times, sensors work by **transduction** whereby they convert one form of energy into another, often times converting input to electrical energy. However, how do we know what the relationship is between the input and the output? If, for instance, the output from a temperature sensor reads as 2 Volts at room temperature, what does an output of 3 Volts mean? In order to answer this question, we need to generate a **calibration curve** for the sensor: an equation that maps input values against output values.
+### Arduino Power Requirements
 
-Here's a cool example: since you'll be dealing with a temperature sensor this lab, check out these calibration curves for different flavors of a temperature sensor that relies on a physical process called the thermoelectric effect. When two dissimilar metals are brought into contact, a voltage is generated between them that is proportional to temperature. Hence: Thermo-Electric. This sensor is called a thermocouple. In the figure below, we can see multiple calibration curves for different types of thermocouples.
+The Arduino Nanos that we use in this class operate at 5V logic. This means the pins coming off of it, like the digital pins, are all at 5Vs. The Arduino, however, has circuitry inside it that lets it take a range of voltages as input. This is called the Vin pin, and takes a voltage between 7-12V. The Arduino then internally converts that down to a safer 5V level for its own operations. For this lab, we will be powering our Arduino Nano with a 9V battery.
 
-![thermocouple](media/../../media/thermocouple.jpg){: .invert-colors-in-dark-mode }
+### Data Logging
 
-Over the next few weeks, you will become very familiar with the sensors used in this course. We'll start by looking at the temperature sensor we'll be using for the semester. Unlike the thermocouple, this temperature sensor has a lot of processing circuitry built into it to make its calibration curve linear.
-
-### How Analog to Digital Converters (ADCs) Work
-
-In lab 1, you may have figured out the form of the relationship between the raw voltage and value returned by `analogRead()`. However, it's unlikely you got this relationship exactly right, as that requires a slightly deeper understanding of how they work at the physical level. We wanted you to simply begin to think about how it worked before. Now, we'll cover this subject more deeply than both the prior labs and videos did.
-
-To begin, we have to consider the differences between the real world and the digital world. The digital world is essentially discrete, whereas the real world is essentially continuous (we are going to ignore quantum mechanics). This means that when converting from the real world to the digital world, there will be some loss of information. This is an important fact to consider when evaluating a sensor or other tool.
-
-The ADC we're using in class is no exception - the maximum resolution, or how finely the instrument can be read, is controlled by the number of bits in the ADC. The more bits an ADC has, the higher the resolution. The equation below lets you calculate an approximate resolution. $$V_{ref}$$ is the maximum voltage of the ADC and bits is the number of bits in the ADC.
-
-$$ Resolution = \frac{V_{ref}}{(2^{bits}-1)} $$
-
-Now, to turn the raw value returned by `analogRead()` into a voltage, you need to simply multiply it by the resolution of the ADC. This is shown by the formula below.
-
-$$ Voltage = Value * Resolution $$
-
-This is not exactly correct, but we will cover this in class later.
+Our Arduino has some memory on it, but reading and writing to this memory is a rather complicated procedure, which is why we need the Arduino IDE to handle writing the code to the Arduino's memory for us. Writing variables to the Arduino's memory is not user-friendly and is difficult to read back. Therefore, we elect to instead use a microSD card, which has a far higher data capacity and allows us to easily read data on our computer. This lab will use a pre-built data logging module to write data to the microSD card in a similar way you write data out to the Arduino's Serial monitor.
 
 ## Procedure
 
-### 1. Wiring the TMP36
+### 1. Powering the Arduino
 
-Using the image below, take note of which pins must be connected to each circuit element. Connecting the TMP36 backwards will quickly smell like BBQ...  Please watch the youtube video above to get the orientation right before burning your fingers.
+To start, we want to power our Arduino with the 9V battery. Plug your Arduino into your breadboard, and plug the 9V into it's connection clip. It should only fit on one way, as the 9V's two terminals are different shapes.
+
+Notice that one wire coming out of the battery is red, and one is black. Common practice says that red will be positive, in this case +9V, and the black will be what we connect to our Arduino's GND.
+
+Take these wires and plug them into your Arduino via your breadboard. Red should go to the Arduino's Vin, and black should go to any GND pin.
+
+Once you've plugged the 9V in, the Arduino should light up - even though it isn't plugged into your computer! If it does, congrats, your external power is working! If not, check your connections again.
+
+As one last check that everything is working before we move on, upload the File → Examples → Basics → Blink code that the Arduino IDE comes with to your Arduino. After it finishes uploading, unplug your computer and verify that the onboard LED on the Arduino continues to blink on only the 9V's power.
+
+### 2. Measuring Battery Voltage
+
+Most modern electronics, from your smartphone to even rockets, have some way of reporting back the charge of any internal batteries. While we don't use the battery for very long at any one time in this lab, other people are using the same batteries, and so we do want to verify they are charged.
+
+To measure battery voltage, we can use the analog pins on the Arduino, similar to how we did in lab 1. The caveat of this is, however, that the analog pins can **only take up to 5V!!** So, before reading the battery in, we need to build a voltage divider to step the battery voltage down to 5V max.
+
+Using our voltage divider [(see the resources page for more)](/resources), we can take 2 1k resistors and step 9V down to 4.5V max. Go ahead and build this voltage divider.
+
+When you are done, your 9V battery should have the black wire going to GND, and the red wire going to **both** Vin **and** a voltage divider.
+
+Now, let's test that the voltages look about right. Go to File → Examples → Basics → AnalogReadSerial and change the `analogRead()` function called in `loop()` to be the pin you plugged your voltage divider into. Run this code and make note of the values it returns.
+
+You know on the Arduino Nano this value will be between 0-1024, and that your max voltage, as reported by the Arduino, is 5V. Convert your raw value to the voltage the Arduino read by dividing it by 1023 and multiplying it by 5V. This is the voltage your Arduino recorded.
+
+Your battery, however, has a higher voltage than that. We now need to undo the effects of the voltage divider to determine the batteries original voltage. Since we used the same resistance on either side of the voltage divider, the voltage is being cut in half. Therefore, we can simply multiply the Arduino's recorded voltage by 2 to get the 9V battery's voltage. It should be somewhere between 8 and 10V.
+
+### 3. Adding the TMP36
+
+Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino. Here is the wiring diagram again for your reference:
 
 [![TMP36 Pinout](https://cdn-learn.adafruit.com/assets/assets/000/000/471/large1024/temperature_tmp36pinout.gif?1447975787)](https://learn.adafruit.com/tmp36-temperature-sensor/overview)
 
-This sensor is rather simple to interface with. When the temperature changes, the output voltage of the sensor changes as well.
+### 4. Adding the MicroSD Card Adapter Module
 
-### 2. Uploading the Code
+Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
 
-Once your TMP36 is plugged in to your Arduino Nano, go to File → Examples → ENGR100-980 → Lab3-TMP36.
+![MicroSD Adapter Module Wiring](../media/SD-Card-Wiring.png){: .invert-colors-in-dark-mode }
 
-<div class="primer-spec-callout info" markdown="1">
-If Lab3's example script does not show up, your library may be out of date. To update it, first try restarting the Arduino IDE. If this doesn't work, try following the same steps you took to install the library to update it.
-</div>
+While your Arduino is powered off and disconnected from the 9V, plug your module in as shown above. The Arduino pins for this **DO** matter and cannot easily be changed, unlike the analog pins.
 
-You will need to modify the analog pin number you are reading off of for this lab. Unlike the last lab, where we provided a specific `#define` compiler variable for you to change the pin with at the top of the example script, this time, you will be changing the value yourself.
+Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-980 → Lab3-SD.
 
-In the provided start code, locate the `loop()` function and find where `analogRead()` is called. It is set to default to pin A1, but you should change this to be whatever **analog** pin you plugged your TMP36 into.
+Please read through the comments of this code file, as in the next lab, you will be adding additional sensors and modifying this file on your own, without it all done for you. In this lab, you may also need to change the analog pins that are the defaults for the TMP36 and voltage divider.
 
-Before we move on to collecting data, let's make sure the circuit is working as expected. To do this, we want to warm up or cool down the temperature sensor. You can do this by simply putting your fingers over the sensor for a minute and watching the voltage change in your Serial monitor. If the voltage does not change, you may have something wrong in your circuit.
+There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
 
-### 3. Collecting Data
+### 5. Collecting Data
 
-Now we have a circuit and some code to tell us what the raw voltage our TMP36 is reading in, as explained above in [How Analog to Digital Converters (ADCs) Work](#how-analog-to-digital-converters-adcs-work).
+With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into a freezer.  Wait for about 2-5 minutes to allow the temperature to adjust.
 
-In order to turn this voltage into a useful temperature, we need to do some math with a calibration curve. This is where the spreadsheet you made during Tuesday's lecture (which you definitely attended, right?), comes in handy.
+Go back to the lab and unplug the 9V now (unplug the battery and leave the wires connected to your board). Carefully remove the microSD from the adapter module, and plug it into your computer. You should see a `DATALOG.CSV` file. If you do not, or the file seems corrupted or very small, delete the file, plug the microSD card back in, and watch what the Serial monitor on your computer says while running the code.
 
-To build this two-point calibration curve, we need, as the name suggests, two points. For this lab, we will collect one temperature inside, and one outside.
+Once you have a sufficiently long test (1-2 minutes) and can see that there are clear changes in temperature in the file created, you are done with the hardware portion of this lab!
 
-1. Start by making a copy of the calibration curve spreadsheet you made during lecture. For those of you who did not attend lecture, see the lecture slides on Canvas, watch the lecture recording, or Google/ask a friend about how to make a calibration curve. It is quite simply a way to find the slope and offset of a linear equation to connect two points. This slope and offset is what we will use to convert our voltage into a temperature.
-2. In your calibration curve copy, set aside a space to make raw measurements before entering things into the spreadsheet. This could be a simple table on a new sheet, or just a table off to the side. It should look something like this:
+Before returning all of your equipment, make sure you save your file on your computer!! Maybe even upload it and share it with team members so you have a backup!
 
-    |              | Voltage | Temperature (°C) |
-    |--------------|---------|------------------|
-    | Indoor Test  |         |                  |
-    | Outdoor Test |         |                  |
+Then, delete the .csv file and any other .txt files off of the microSD card (you can leave any folders) so that other teams in future labs have to actually do the lab themselves, and don't just steal your data!
 
-3. Now, let your circuit sit still on your workbench for a minute to let it adjust to the temperature in the lab. Record (using Serial monitor), what the rough average voltage reading is while it is stationary inside. Additionally, make a note of the temperature in the room, which will be written on the whiteboard in lab.
-4. Next, pick up your whole circuit and computer, and take a field trip outside. Find a nice spot in the sun (or out of the rain if the weather doesn't cooperate) and again let your board sit for a while. While you wait, you should be able to watch the voltage readings in your Serial monitor slowly level out. Once there is no longer much change between their values, take their rough average current value and record it into the table in your spreadsheet. Record this along with the current temperature outside. (You could also find a regfrigerator or freezer around the building and put your board in one of these.  There are thermometers in the lab that can be used to measure the temperature of an object - as one of the IAs for one of these.)
+### 6. Analyzing the Data in Google Sheets (or Excel)
 
-### 4. Making a Calibration Curve
+Go to a new Google Sheet ([sheets.new](https://sheets.new)) (or Excel file), and go to File → Import → Upload and choose the `DATALOG.CSV` file that your Arduino created.
 
-Now that you have filled out your basic table of indoor and outdoor (or refridge) temperature and voltages, plug these values into your spreadsheet to calculate your calibration curve.
+In the event your Arduino lost power or reset while running, you may have a header at places other than just the top of your spreadsheet. Go through and clean up any of these occurrences and delete their entire row.
 
-Your calibration curve for a TMP36 will be linear, unlike a curve for a thermocouple as described in the introduction. This means your final calibrated equation will take the form of $$y=mx+b$$, where $$m$$ is the slope and $$b$$ is the y-intercept.
+Now, let's add some columns to the spreadsheet. Right now you should have Time (ms), TMP36 (Raw), and Voltage (Raw). Let's add "TMP36 (V)", "Voltage (5V)", "TMP36 (C)", and "Voltage (9V)".
 
-The $$m$$ and $$b$$ values calculated from this step are what you will use in the next step.
+In the first cell of each column, you will need to make a simple equation/formula to calculate the values based off of the raw sensor values the Arduino recorded. For example, for turning a raw TMP36 value into a TMP36 voltage, you would write "=(B2/1023)*5" in the TMP36 voltage cell on row 2. Then, click the blue circle in the bottom-right corner of this cell and drag it all the way down. This should now create an auto-calculated TMP36 voltage for each cell.
 
-### 5. Modifying the Code
+Repeat this general process for each column, modifying the equations as needed. For converting TMP36 voltages into temperatures, use the same calibration curve you used in the prior lab.
 
-Now we are ready to change the Arduino's code so that instead of printing a voltage, it will print a temperature.
-
-To do this, there are some commented out lines that define `slope`, `intercept`, and `tempC`. You need to now uncomment those lines (by removing the leading slashes), and update their values to whatever values you got in the previous procedure step.
-
-Finally, we need to tell the Arduino to print out the `tempC` variable instead of the `voltage` to Serial now, so we do this by changing what variable is passed into `Serial.println()` from `Serial.println(voltage);` to `Serial.println(tempC);`.
-
-Run your code again and look at the Serial monitor. You should now see values that look like temperatures, and they should roughly match the indoor temperature. If they do, move on to the next step.
-
-### 6. Field Trip Pt. 2
-
-We are now finally ready to record our temperatures as we go outside. Start by opening the Serial plotter:
-
-![Serial Plotter](https://docs.arduino.cc/static/007eb89dc4e226a14834d28da2b3f8b6/4ef49/serial-plotter-open.png)
-
-You should now see temperature data being graphed in real time!
-
-While you have the Serial plotter open, walk outside and wait for your temperature to adjust and flatten out on your plot. Once this is done, take a screenshot of the plot. This will be one of the things you include in your submission.
-
-## Post-Lab Questions
-
-To get you thinking critically about how your 2-point calibration curve works, as well as more comfortable with using a spreadsheet, answer the following questions:
-
-1. If your Arduino read in a voltage of 0.4V, what temperature would that equate to on your calibration curve? (Show your work!)
-2. What would the voltage (based on your own calibration curve) be if it output a temperature of 6 °C? (Show work!)
-3. What **binary value** would your Arduino be reading in for a voltage of 0V? 2.5V? 5V? If you are stuck on this, try re-reading the section about [how analog to digital converters (ADCs) work](#how-analog-to-digital-converters-adcs-work) and try working backwards through the Arduino code. The `analogRead()` function is what actually returns the binary value, so if you know the voltage, could you re-arrange the equation given in the starter code to solve for the binary value?
-
-## Memo
-
-In addition to the pdf you will create as detailed in the submission below, you will also be writing a memo for this lab.
-
-For details about the memo, [see the Canvas assignment](https://umich.instructure.com/courses/618909/assignments/2136869).
+Now, we need to make some graphs to analyze the data. Each graph to make is detailed in its own submission checkbox. Make sure each graph follows tech-comm best-practices and includes a title, axis labels, units, and is clearly visible. For graphs with multiple values over-layed, ensure you have added a legend.
 
 ## Submission
 
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
-- [ ] A **screenshot** of your calibration curve spreadsheet.
-- [ ] Your data table of indoor and outdoor temperatures and voltages.
-- [ ] A screenshot of your Arduino IDE's Serial Plotter output showing both the temperature as it changes as you walk outside.
-- [ ] Answers (and any work you may have) to the post-lab questions.
+- [ ] A plot of temperature (C) versus time. Time should be your independent variable.
+- [ ] A plot comparing 9V battery voltage to time. Time is again your independent variable.
+- [ ] A plot of both 5V reference variables versus time. Both 5V reference variables means both your TMP36's voltage, and your battery's voltage divider voltage (before being scaled up to the voltage pre-voltage divider).
+- [ ] A plot of both raw value variables versus time.
 
-To put said content into a PDF, it is suggested you create a new Google Doc and paste your images and write your text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
+To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
-**Seperately**:
-
-- [ ] Also upload your memo as a PDF to the Memo 1 - Temperature Sensing assignment on Canvas. This memo is a completely separate submission from the PDF you turn in for this lab.
-
+<div class="primer-spec-callout danger" markdown="1">
+Submitting anything other than a single PDF may result in your work not being graded or your scores being heavily delayed.
+</div>
