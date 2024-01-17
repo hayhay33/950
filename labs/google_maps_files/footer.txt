@@ -1,0 +1,14 @@
+      }
+
+    </script>
+  </head>
+
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+    <b>Author:</b><br>
+    Aaron Ridley<p>
+    <b>Class:</b><br>
+    Eng100-950<p>
+  </body>
+
+</html>
