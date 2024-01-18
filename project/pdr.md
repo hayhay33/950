@@ -14,7 +14,7 @@ Your PDR should contain:
 - A clear statement/summary of your team's science objective / question
 - Requirements that are levied because of science and class
 (Mass, data, power, connections, etc.)
-- Your extra sensor and its characteristics
+- Your extra sensor (if applicable) and its characteristics
 - System-level block diagram (Very much like your schematic, but simplified and with connections (5V, 3.3V, analog, digital))
 - PCB design. This should have some sort of indication of the size of the PCB. (Pull from Altium; photo of actual PCB.)
 - Preliminary structure design with some list of materials that you will need.
@@ -26,17 +26,15 @@ Your PDR should contain:
 - Who will be responsible for what parts of the project (For example, coding, soldering, building structure, testing)
 
 
-
-
 Limitations on the PDR:
 
-Because we have 15 teams, we have a limited amount of time to dedicate to the PDRs in class (Mar. 14 - 16).  We will spread the PDRs across class and discussions. We will put out a schedule of the PDRs on Monday, March 13th.
+Because we have a lot of teams, we have a limited amount of time to dedicate to the PDRs in class.  We will most likely spread the PDRs across class and discussions. We will put out a schedule of the PDRs on the Monday of PDR week.
 
-All PDRs presentations are due on Tuesday, March 14th at 1 PM.
+All PDRs presentations are due on the Tuesday of PDR week before class (see Canvas for the exact date and time!)
 
 Each PDR presentation will be 20 minutes including questions. Expect 10 minutes for questions, so each PDR should be aimed at 10 minutes.
 
-Please follow the presentation style described in class. Your PDR will be graded on the presentation style as well as the technical content.
+Please follow the presentation style described in class. Your PDR will be graded on the presentation style (4x) as well as the technical content (1x).
 
 Please treat the PDR as a semi-professional presentation.  You don't have to wear a suit, but don't wear sweat pants.
 
@@ -48,3 +46,5 @@ Please make sure all of your decisions have a thorough justification associated 
 Cite your sources! You will be (and should be) doing some research to justify your decision making, and this means showing where you got your information from. This is not only required for academic integrity, but also an important step to showing where your justification actually came from (and will help a lot with getting sufficient detail for this project). Good sources include NASA documentation, company spec sheets, and research, but many other reliable sources are also useful.
 
 Feedback during PDR is going to be extremely valuable for your final product. The better prepared you are for PDR, the more useful feedback you’re going to get and your final product will be far more thorough, feasible, and polished.
+
+There is a requirement for providing peer feedback on at least three other teams' PDRs.  See the Canvas assignment for PDR Peer Review for the survey link to complete this.
