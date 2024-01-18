@@ -38,7 +38,13 @@ Saving Arduino sensor data to a microSD card to that we can use it later, and po
 
 Adding an accelerometer and pressure sensor to our Arduino breadboard circuit.
 
-[Link to lab 4](/labs/lab-5)
+[Link to lab 4](/labs/lab-4)
+
+## Lab 5: Adding GPS
+
+Adding a GPS to our Arduino breadboard circuit.
+
+[Link to lab 5](/labs/lab-5)
 
 ## Lab 6: Altium
 
