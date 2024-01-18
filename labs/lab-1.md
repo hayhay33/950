@@ -27,7 +27,7 @@ For this lab, you will need:
 - [ ] 1 Breadboard
 - [ ] 1 Programming Cable (and adapters if necessary)
 - [ ] 6 LEDs
-- [ ] 2 1k$$\Omega$$ resistors
+- [ ] 3 1k$$\Omega$$ resistors
 - [ ] A hand-full of jumper wires (it is possible to do the whole lab without any)
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 
