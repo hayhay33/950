@@ -121,7 +121,7 @@ The concept of the voltage divider can be extended to any number of resistors. T
 
 2. Plug a wire directly from the 5V line of the Arduino to the A1 pin of the Arduino.
 
-3. Go to File → Examples → ENGR100-980 → "Lab1-Voltage-Divider" to open the starter code for this section.
+3. Go to File → Examples → ENGR100-950 → "Lab1-Voltage-Divider" to open the starter code for this section.
   - Here we will use the `analogRead()` function to read in the voltage.
   - To send the data back from the Arduino to your computer our sample codes uses `Serial`. First it specifies `Serial.begin(9600)` to initiate communications between the Arduino and your computer. The "9600" specifies the baud rate, and lets the Arduino know how fast to send data to the computer. Then, to actually transmit data, we use `Serial.print(dataHere)`. The variable `dataHere` can be data of many types, including integers, doubles, and character arrays.
 4. To see the data sent from the Arduino to the computer, open the Serial monitor inside of the Arduino IDE. This can be done by clicking the magnifying glass in the top, left-hand corner of the IDE.
