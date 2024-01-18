@@ -3,11 +3,11 @@ layout: spec
 latex: true
 ---
 
-# Lab 5: Designing a PCB using Altium Designer
+# Lab 6: Designing a PCB using Altium Designer
 
 ## Contents
 
-- [Lab 5: Designing a PCB using Altium Designer](#lab-5-designing-a-pcb-using-altium-designer)
+- [Lab 6: Designing a PCB using Altium Designer](#lab-6-designing-a-pcb-using-altium-designer)
   - [Contents](#contents)
   - [Introduction](#introduction)
   - [Participation](#participation)
@@ -68,7 +68,7 @@ Note that each component is defined with its own individual symbol. Capacitors, 
 
 #### Your Schematic Contents
 
-Obviously, the functionality we're trying to put on a PCB is the ability to record data from a model rocket, so starting your schematic off by adding your full Lab 5 circuit is a good starting point. Additionally, we decided that turning on and off your board would be nice, so add the SW-SPST switch included in the miscellaneous devices library between the positive terminal of the battery and the VIN pin on the Arduino.
+Obviously, the functionality we're trying to put on a PCB is the ability to record data from a model rocket, so starting your schematic off by adding your full Lab 3 circuit is a good starting point. Additionally, we decided that turning on and off your board would be nice, so add the SW-SPST switch included in the miscellaneous devices library between the positive terminal of the battery and the VIN pin on the Arduino.
 
 LEDs are also useful when diagnosing software bugs without a computer, telling you if the board is on or off, and also making cool light patterns. Please wire pins D4-D9 to their own LED with a 1K resistor on each LED. This way, you have 6 LEDs to diagnose problems and play with.
 
