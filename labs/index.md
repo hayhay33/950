@@ -25,6 +25,7 @@ Using our Arduino and circuitry knowledge to read data from a temperature sensor
 
 [Link to lab 2](/labs/lab-2)
 
+<!--
 ## Lab 3: Creating a Standalone Arduino
 
 Saving Arduino sensor data to a microSD card to that we can use it later, and powering an Arduino with a battery.
@@ -42,3 +43,4 @@ Adding an accelerometer and pressure sensor to our Arduino breadboard circuit.
 ## Lab 6: Altium
 
 [Link to lab 6](/labs/lab-6)
+-->
