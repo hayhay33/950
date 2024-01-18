@@ -39,6 +39,6 @@ Adding an accelerometer and pressure sensor to our Arduino breadboard circuit.
 
 [Link to lab 4](/labs/lab-5)
 
-## Lab 5: Altium
+## Lab 6: Altium
 
-[Link to lab 5](/labs/lab-7)
+[Link to lab 6](/labs/lab-6)
