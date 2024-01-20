@@ -145,7 +145,7 @@ To get you thinking critically about how your 2-point calibration curve works, a
 
 In addition to the pdf you will create as detailed in the submission below, you will also be writing a memo for this lab.
 
-For details about the memo, [see the Canvas assignment](https://umich.instructure.com/courses/618909/assignments/2136869).
+For details about the memo, [see the Canvas assignment](https://umich.instructure.com/courses/658397/assignments/2251439).
 
 ## Submission
 
@@ -160,5 +160,5 @@ To put said content into a PDF, it is suggested you create a new Google Doc and 
 
 **Seperately**:
 
-- [ ] Also upload your memo as a PDF to the Memo 1 - Temperature Sensing assignment on Canvas. This memo is a completely separate submission from the PDF you turn in for this lab.
+- [ ] Also upload your memo as a PDF to the Memo 1: Temperature Sensing assignment on Canvas. This memo is a completely separate submission from the PDF you turn in for this lab.
 
