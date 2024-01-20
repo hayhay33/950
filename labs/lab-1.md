@@ -28,7 +28,7 @@ For this lab, you will need:
 - [ ] 1 Programming Cable (and adapters if necessary)
 - [ ] 6 LEDs
 - [ ] 3 1k$$\Omega$$ resistors
-- [ ] A hand-full of jumper wires (it is possible to do the whole lab without any)
+- [ ] A hand-full of jumper wires (it is possible to do the lab without any)
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 
 ## Introduction
