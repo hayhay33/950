@@ -3,4 +3,4 @@ layout: spec
 latex: true
 ---
 
-# Lab 5: GPS and Integration
+# Lab 4: Power and Calibrations
