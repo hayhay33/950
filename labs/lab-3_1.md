@@ -5,7 +5,7 @@ latex: true
 
 # Lab 3: Creating a Standalone Arduino and Adding Sensors
 
-## Contents
+## Contents 
 
 - [Lab 3: Creating a Standalone Arduino and Adding Sensors](#lab-3-creating-a-standalone-arduino-and-adding-sensors)
   - [Contents](#contents)
