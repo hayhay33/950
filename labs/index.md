@@ -26,27 +26,35 @@ Using our Arduino and circuitry knowledge to read data from a temperature sensor
 [Link to lab 2](/labs/lab-2)
 
 <!--
-## Lab 3: Creating a Standalone Arduino
+## Lab 3: Creating a Standalone Circuit and Adding Sensors
 
-Saving Arduino sensor data to a microSD card to that we can use it later, and powering an Arduino with a battery.
+Saving Arduino sensor data to a microSD card so that we can use it later, and powering an Arduino with a battery. Additionally, adding more sensors such as pressure, acceleration, and humidity sensors.
 
 :warning: This *may* come in handy when launching our weather balloons...
 
 [Link to lab 3](/labs/lab-3)
 
-## Lab 4: Acceleration & Pressure
+## Lab 4: Power and Calibrations
 
-Adding an accelerometer and pressure sensor to our Arduino breadboard circuit.
+Creating a voltage regulating circuit to handle the power supply, and calibrating our complete circuit with known values.
 
 [Link to lab 4](/labs/lab-4)
 
 ## Lab 5: Adding GPS
 
-Adding a GPS to our Arduino breadboard circuit.
+Adding a digital GPS component to our Arduino breadboard circuit.
 
 [Link to lab 5](/labs/lab-5)
 
 ## Lab 6: Altium
 
+Moving away from the breadboards and creating a custom PCB (Printed Circuit Board) using Altium software.
+
 [Link to lab 6](/labs/lab-6)
+
+** Lab 7: Structures
+
+Design and testing of your custom payload structures.
+
+[Link to lab 7](/labs/lab-7)
 -->

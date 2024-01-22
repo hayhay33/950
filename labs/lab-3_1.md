@@ -3,11 +3,11 @@ layout: spec
 latex: true
 ---
 
-# Lab 3: Creating a Standalone Arduino
+# Lab 3: Creating a Standalone Arduino and Adding Sensors
 
 ## Contents
 
-- [Lab 3: Creating a Standalone Arduino](#lab-3-creating-a-standalone-arduino)
+- [Lab 3: Creating a Standalone Arduino and Adding Sensors](#lab-3-creating-a-standalone-arduino-and-adding-sensors)
   - [Contents](#contents)
   - [Materials](#materials)
   - [Introduction](#introduction)
