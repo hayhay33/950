@@ -69,8 +69,8 @@ To start, we want to power our Arduino with the 9V battery. Plug your Arduino in
 
 Notice that one wire coming out of the battery is red, and one is black. Common practice says that red will be positive, in this case +9V, and the black will be what we connect to our Arduino's GND.
 
-<div class="primer-spec-callout warning" markdown="1">
-Oftentimes we will refer to "Common Practice", meaning the circuit will work if you don't follow this convention, but it may be harder to understand for an outsider, or in certain "edge cases" it might function differently than expected. A common practice we would like you to follow is color coding your jumper wires, as this makes debugging a complex circuit much easier. Power should be red, GND should be black, and any data/signal jumpers should be some other color. It's also helpful to designate each vertical row on the breadboard as something standard. (Ground the blue strips, and supply power to the red strips).
+<div class="primer-spec-callout danger" markdown="1">
+Oftentimes we will refer to "Common Practice", meaning the circuit will work if you don't follow this convention, but it may be harder to understand for an outsider, or in certain "edge cases" it might function differently than expected. A common practice we are requiring you to follow is color coding your jumper wires, as this makes debugging a complex circuit much easier. Power should be red, GND should be black, and any data/signal jumpers should be some other color. Additionally, supply 5v to one red power rail on the breadboard, 3.3v to the other red rail, and GND the remaining two blue rails. Then you can connect any sensors to those rails without tracing wires over and over back to the Arduino pins.
 </div>
 
 Take these wires and plug them into your Arduino via your breadboard. Red should go to the Arduino's Vin, and black should go to any GND pin.
@@ -102,7 +102,7 @@ Your battery, however, has a higher voltage than that. We now need to undo the e
 ### 3. Adding the Temperature Sensors
 
 <div class="primer-spec-callout danger" markdown="1">
-Every time you modify the code, you will clearly need to connect the Arduino to your computer. When your computer is connected, the battery should not be, and vice versa. Whenever you perform a calibration curve, or want to read accurate values to the SD card, you should do so with the battery connected. Because of the differences in voltage applied by a computer through USB and the 9V batteries we are using, there is some variation in the voltage values read by the Arduino from each sensor. Keep this in mind!
+Whenever you perform a calibration curve, or want to read accurate values to the SD card, you should do so with the battery connected. Because of the differences in voltage applied by a computer through USB and the 9V batteries we are using, there is some variation in the voltage values read by the Arduino from each sensor. Keep this in mind!
 </div>
 
 - [Link to TMP36 Spec Sheet](https://drive.google.com/file/d/10Lu2-s9MYqh0s0O6Nkxy8E_LDwDpnZ7T/view?usp=sharing)
@@ -153,11 +153,13 @@ Take measurement data indoors and while walking outside to see changes. Create a
 
 Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **3.3V pin** as the power supply.
 
-Add code to the program you've been working with to read raw values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before.
+Add code to the program you've been working with to read raw values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second.
 
 <div class="primer-spec-callout info" markdown="1">
 To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experience 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
 </div>
+
+Now that you have a completed circuit, take a picture of your setup and save this for your submission file. **(Remember, wires and rails should follow "common practice" mentioned earlier.)**
 
 ### 7. Adding the MicroSD Card Adapter Module
 
@@ -200,7 +202,9 @@ Make sure you follow "common practice" TechComm rules, labelling all plots' axes
 
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
-- [ ] 
+- [ ] A picture of your complete circuit with proper color conventions
+- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels!)
+- [ ] A screenshot of your serial monitor once all sensors are printing values in the same line
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
