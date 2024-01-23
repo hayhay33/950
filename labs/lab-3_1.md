@@ -163,8 +163,6 @@ Add code to the program you've been working with to read raw values from each of
 To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experience 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
 </div>
 
-Now that you have a completed circuit, take a picture of your setup and save this for your submission file. **(Remember, wires and rails should follow "common practice" mentioned earlier.)**
-
 ### 7. Adding the MicroSD Card Adapter Module
 
 Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
@@ -180,6 +178,8 @@ Once everything is wired up, put your microSD card into the adapter module and p
 Please read through the comments of this code file, as you will be adding additional sensors and modifying this file on your own. In this lab, you may also need to change the analog pins that are the defaults for all of your sensors.
 
 There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
+
+Now that you have a completed circuit, take a picture of your setup and save this for your submission file. **(Remember, wires and rails should follow "common practice" mentioned earlier.)**
 
 ### 8. Collecting Data
 
