@@ -10,14 +10,14 @@ const int chipSelect = 10;
 // ############### START EDITING HERE (1/3) ###############
 // Adjust the following pins according to your setup
 
+// Pin for voltage divider
+const int vDivPin = A0;
+
 // Pin for first TMP36
-const int tmp1Pin = A0;
+const int tmp1Pin = A1;
 
 // Pin for second TMP36
-const int tmp2Pin = A1;
-
-// Pin for voltage divider
-const int vDivPin = A2;
+const int tmp2Pin = A2;
 
 // Pin for pressure sensor
 const int pressPin = A3;
@@ -36,7 +36,7 @@ const int accelzPin = A7;
 // **HINT HINT WINK WINK**
 
 // This is the string that goes at the top of your csv file. It is the column headers for your spreadsheet.
-const String header = "Time (ms),TMP36_1 (Raw),TMP36_2 (Raw),Voltage (Raw),Pressure (raw),Humidity (raw),Accel_x (raw),Accel_y (raw),Accel_z (raw)";
+const String header = "Time (ms),Voltage (V),TMP36_1 (Raw),TMP36_2 (Raw),Pressure (raw),Humidity (raw),Accel_x (raw),Accel_y (raw),Accel_z (raw)";
 
 #include <SPI.h>
 #include <SD.h>
@@ -71,9 +71,6 @@ void loop() {
 
     // Note: in future labs, you may need to change this to add additional sensors.
 
-    double tmp1Val = analogRead(tmp1Pin); // First temperature reading (raw)
-    double tmp2Val = analogRead(tmp2Pin); // Second temperature reading (raw)
-
     // ############### START EDITING HERE (2/3) ###############
 
     double vDivVal = analogRead(vDivPin); // Battery voltage reading (THIS IS FROM VOLTAGE DIVIDER)
@@ -81,6 +78,9 @@ void loop() {
     double vDivAdj = ???; // What should this line be to make the vDivAdj accurately reflect the battery voltage?
 
     // ############### END EDITING HERE (2/3) ###############
+
+    double tmp1Val = analogRead(tmp1Pin); // First temperature reading (raw)
+    double tmp2Val = analogRead(tmp2Pin); // Second temperature reading (raw)
 
     double pressVal = analogRead(pressPin); // Pressure reading (raw)
     double humidVal = analogRead(humidPin); // Humidity reading (raw)
@@ -94,14 +94,14 @@ void loop() {
     // add the time (since boot) in milliseconds
     dataString += String(millis());
     dataString += ",";
+    // add the adjusted voltage divider value
+    dataString += String(vDivAdj);
+    dataString += ",";
     // add the first raw TMP36 value
     dataString += String(tmp1Val);
     dataString += ",";
     // add the second raw TMP36 value
     dataString += String(tmp2Val);
-    dataString += ",";
-    // add the adjusted voltage divider value
-    dataString += String(vDivAdj);
     dataString += ",";
     // add the raw pressure value
     dataString += String(pressVal);
