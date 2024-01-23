@@ -20,13 +20,13 @@ This is the first lab completed as a team! As such, the amount of work needed to
   - [Procedure](#procedure)
     - [1. Powering the Arduino](#1-powering-the-arduino)
     - [2. Measuring Battery Voltage](#2-measuring-battery-voltage)
-    - [3. Adding the TMP36 Sensors](#3-adding-the-tmp36-sensors)
+    - [3. Adding the Temperature Sensors](#3-adding-the-temperature-sensors)
     - [4. Adding the Pressure Sensor](#4-adding-the-pressure-sensor)
     - [5. Adding the Humidity Sensor](#5-adding-the-humidity-sensor)
     - [6. Adding the Accelerometer](#6-adding-the-accelerometer)
     - [7. Adding the MicroSD Card Adapter Module](#7-adding-the-microsd-card-adapter-module)
     - [8. Collecting Data](#8-collecting-data)
-    - [9. Analyzing the Data in Google Sheets (or Excel)](#9-analyzing-the-data-in-google-sheets-or-excel)
+    - [9. Analyzing the Data in MATLAB](#9-analyzing-the-data-in-matlab)
   - [Submission](#submission)
 
 ## Materials
@@ -96,19 +96,61 @@ You know on the Arduino Nano this value will be between 0-1024, and that your ma
 
 Your battery, however, has a higher voltage than that. We now need to undo the effects of the voltage divider to determine the battery's original voltage. Since we used the same resistance on either side of the voltage divider, the voltage is being cut in half. Therefore, we can simply multiply the Arduino's recorded voltage by 2 to get the 9V battery's voltage. It should be somewhere between 8 and 10V.
 
-### 3. Adding the TMP36 Sensors
+### 3. Adding the Temperature Sensors
 
-Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino. Here is the wiring diagram again for your reference:
+- [Link to TMP36 Spec Sheet](https://drive.google.com/file/d/10Lu2-s9MYqh0s0O6Nkxy8E_LDwDpnZ7T/view?usp=sharing)
+
+Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino, and read it using `analogRead()` and `Serial.println()`. Add this to the code used for measuring the battery voltage with comma-separated values. (Hint: You can use `Serial.print()` to print values without a newline character between them, which may help you print csv integers to the serial monitor for testing. Then you can just use `Serial.print(",");` to add a comma between the values).
+
+Here is the wiring diagram again for your reference:
 
 [![TMP36 Pinout](https://cdn-learn.adafruit.com/assets/assets/000/000/471/large1024/temperature_tmp36pinout.gif?1447975787)](https://learn.adafruit.com/tmp36-temperature-sensor/overview)
 
-**Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.**
+<div class="primer-spec-callout warning" markdown="1">
+Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.
+</div>
+
+Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values.
 
 ### 4. Adding the Pressure Sensor
 
+- [Link to MPX4115 Spec Sheet](https://drive.google.com/file/d/1HvO6ww0i4jqZtf4NJvgjcQmIwZw6AqbE/view?usp=sharing)
+
+<div class="primer-spec-callout info" markdown="1">
+Pay attention to the required supply voltage for each of these components to prevent accidental damage. You can find these values in the provided spec sheets for each individual component.
+</div>
+
+Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided. **You only need to connect the Vin, GND, and Vout pins.** Print the data to the Serial Monitor to ensure it is working, using `analogRead()` like before with the temperature sensors, add this to the code with the battery voltage and temperature sensors so that you now have four comma-separated values printed in one line.
+
+The value we are printing to the serial monitor is raw, and needs calibrated. Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement.
+
+<div class="primer-spec-callout info" markdown="1">
+Note: You may simply look up the local Ann Arbor pressure using a weather app for the calibration point.
+</div>
+
+Apply this calibration curve to the code as before with the temperature sensors, adding to the string of values printed to the serial monitor. The values shouldn't be changing much, because pressure won't vary by large values while remaining at a steady altitude.
+
 ### 5. Adding the Humidity Sensor
 
+- [Link to HIH-4030 Spec Sheet](https://drive.google.com/file/d/1AbuDJoNI-4D2zUW1M4IfG_zt5Is2a3Eh/view?usp=sharing)
+
+Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **5V pin** as the power supply.
+
+Add lines to the code from before to print the humidity data in the same comma-separated format.
+
+Take measurement data indoors and while walking outside to see changes. Create a calibration curve equation for this sensor and apply it to the code to print a calibrated humidity value in the serial monitor.
+
 ### 6. Adding the Accelerometer
+
+- [Link to ADXL335 Spec Sheet](https://drive.google.com/file/d/1nYnJopSdXv7brn2TT8iLgIH01D7TD_NQ/view?usp=sharing)
+
+Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **3.3V pin** as the power supply.
+
+Add code to the program you've been working with to read raw values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before.
+
+<div class="primer-spec-callout info" markdown="1">
+To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experience 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
+</div>
 
 ### 7. Adding the MicroSD Card Adapter Module
 
@@ -118,46 +160,33 @@ Unlike the other sensors and modules we have used so far, the MicroSD module we 
 
 While your Arduino is powered off and disconnected from the 9V, plug your module in as shown above. The Arduino pins for this **DO** matter and cannot easily be changed, unlike the analog pins.
 
-Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-980 → Lab3-SD.
+Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-950 → Lab3-SD.
 
-Please read through the comments of this code file, as in the next lab, you will be adding additional sensors and modifying this file on your own, without it all done for you. In this lab, you may also need to change the analog pins that are the defaults for the TMP36 and voltage divider.
+Please read through the comments of this code file, as you will be adding additional sensors and modifying this file on your own. In this lab, you may also need to change the analog pins that are the defaults for all of your sensors.
 
 There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
 
 ### 8. Collecting Data
 
-With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into a freezer.  Wait for about 2-5 minutes to allow the temperature to adjust.
+With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into a freezer.  Wait for about 2-5 minutes to allow the temperature to adjust. Then carry your board to the Ford Robotics Building and go up to the top floor, shaking the package intermittently. This should provide plenty of data for all of your sensors!
 
 Go back to the lab and unplug the 9V now (unplug the battery and leave the wires connected to your board). Carefully remove the microSD from the adapter module, and plug it into your computer. You should see a `DATALOG.CSV` file. If you do not, or the file seems corrupted or very small, delete the file, plug the microSD card back in, and watch what the Serial monitor on your computer says while running the code.
 
-Once you have a sufficiently long test (1-2 minutes) and can see that there are clear changes in temperature in the file created, you are done with the hardware portion of this lab!
+Once you have a sufficiently long test (1-2 minutes) and can see that there are clear changes in the data in the file created, you are done with the hardware portion of this lab!
 
 Before returning all of your equipment, make sure you save your file on your computer!! Maybe even upload it and share it with team members so you have a backup!
 
 Then, delete the .csv file and any other .txt files off of the microSD card (you can leave any folders) so that other teams in future labs have to actually do the lab themselves, and don't just steal your data!
 
-### 9. Analyzing the Data in Google Sheets (or Excel)
+### 9. Analyzing the Data in MATLAB
 
-Go to a new Google Sheet ([sheets.new](https://sheets.new)) (or Excel file), and go to File → Import → Upload and choose the `DATALOG.CSV` file that your Arduino created.
 
-In the event your Arduino lost power or reset while running, you may have a header at places other than just the top of your spreadsheet. Go through and clean up any of these occurrences and delete their entire row.
-
-Now, let's add some columns to the spreadsheet. Right now you should have Time (ms), TMP36 (Raw), and Voltage (Raw). Let's add "TMP36 (V)", "Voltage (5V)", "TMP36 (C)", and "Voltage (9V)".
-
-In the first cell of each column, you will need to make a simple equation/formula to calculate the values based off of the raw sensor values the Arduino recorded. For example, for turning a raw TMP36 value into a TMP36 voltage, you would write "=(B2/1023)*5" in the TMP36 voltage cell on row 2. Then, click the blue circle in the bottom-right corner of this cell and drag it all the way down. This should now create an auto-calculated TMP36 voltage for each cell.
-
-Repeat this general process for each column, modifying the equations as needed. For converting TMP36 voltages into temperatures, use the same calibration curve you used in the prior lab.
-
-Now, we need to make some graphs to analyze the data. Each graph to make is detailed in its own submission checkbox. Make sure each graph follows tech-comm best-practices and includes a title, axis labels, units, and is clearly visible. For graphs with multiple values over-layed, ensure you have added a legend.
 
 ## Submission
 
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
-- [ ] A plot of temperature (C) versus time. Time should be your independent variable.
-- [ ] A plot comparing 9V battery voltage to time. Time is again your independent variable.
-- [ ] A plot of both 5V reference variables versus time. Both 5V reference variables means both your TMP36's voltage, and your battery's voltage divider voltage (before being scaled up to the voltage pre-voltage divider).
-- [ ] A plot of both raw value variables versus time.
+- [ ] 
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
