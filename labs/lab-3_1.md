@@ -46,6 +46,8 @@ This is the first lab completed as a team! As such, the amount of work needed to
 - [ ] 1 9V battery
 - [ ] 1 9V battery connector
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
+- [ ] ENGR100-950 Arduino Library
+- [ ] [Provided MATLAB script](https://drive.google.com/file/d/1_KK009QqppcqEylwyjJgyH0OspNltvDe/view?usp=sharing)
 
 ## Introduction
 
@@ -197,11 +199,10 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 At this point, you should have a CSV file saved to your computer. This file should be a matrix of values with 9 columns (time + sensors), and twice as many rows as the number of seconds the program collected data (if you didn't change the delay in the provided code). Since we have a matrix of data, let's use MATLAB (MATrix LABoratory) to make sense of all this data!
 
-<!-- NEED TO ADD A LINK BELOW -->
-Start by opening the script provided to you here<!-- LINK -->. Look through the script, editing values or variables where directed, and then run the script to analyze your data. You should see plots for internal and external temperatures, pressure, humidity, and acceleration!
+Start by opening the script provided to you [here](https://drive.google.com/file/d/1_KK009QqppcqEylwyjJgyH0OspNltvDe/view?usp=sharing). Look through the script, editing values or variables where directed, and then run the script to analyze your data. When you click run, you will be asked to enter the filename for the file containing your code. In your case it is likely `DATALOG.CSV` unless you changed the code provided to you. In order to read the file, you must make sure the file is in the same directory as the provided script you downloaded. Once you hit run, you should see plots for battery voltage, internal and external temperatures, pressure, humidity, and acceleration in each axis!
 
 <div class="primer-spec-callout warning" markdown="1">
-Make sure you follow "common practice" TechComm rules, labelling all plots' axes and titles, and add legends where necessary.
+Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
 </div>
 
 ## Submission
@@ -209,8 +210,8 @@ Make sure you follow "common practice" TechComm rules, labelling all plots' axes
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
 - [ ] A picture of your complete circuit with proper color conventions
-- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels!)
 - [ ] A screenshot of your serial monitor once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses)
+- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels!)
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
