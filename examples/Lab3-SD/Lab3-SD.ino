@@ -101,7 +101,7 @@ void loop() {
     dataString += String(tmp2Val);
     dataString += ",";
     // add the adjusted voltage divider value
-    dataString += String(vDivValAdj);
+    dataString += String(vDivAdj);
     dataString += ",";
     // add the raw pressure value
     dataString += String(pressVal);
