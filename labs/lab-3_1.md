@@ -34,12 +34,15 @@ This is the first lab completed as a team! As such, the amount of work needed to
 - [ ] 1 Arduino Nano
 - [ ] 1 Breadboard
 - [ ] 1 Programming Cable (and adapters if necessary)
-- [ ] 1 TMP36 Temperature Sensor
+- [ ] 2 TMP36 Temperature Sensors
+- [ ] 1 Pressure Sensor
+- [ ] 1 Humidity Sensor
+- [ ] 1 Accelerometer
 - [ ] 1 MicroSD Card
 - [ ] 1 Data Logger
 - [ ] 1 MicroSD Card - USB Adapter
 - [ ] 2 1k$$\Omega$$ resistors
-- [ ] 12-ish jumper wires
+- [ ] A handful of jumper wires
 - [ ] 1 9V battery
 - [ ] 1 9V battery connector
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
@@ -184,7 +187,14 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 ### 9. Analyzing the Data in MATLAB
 
+At this point, you should have a CSV file saved to your computer. This file should be a matrix of values with 9 columns (time + sensors), and twice as many rows as the number of seconds the program collected data. Since we have a matrix of data, let's use MATLAB (MATrix LABoratory) to make sense of all this data!
 
+<!-- NEED TO ADD A LINK BELOW -->
+Start by opening the script provided to you here<!-- LINK -->. Look through the script, editing values or variables where directed, and then run the script to analyze your data. You should see plots for internal and external temperatures, pressure, humidity, and acceleration!
+
+<div class="primer-spec-callout warning" markdown="1">
+Make sure you follow "common practice" TechComm rules, labelling all plots' axes and titles, and add legends where necessary.
+</div>
 
 ## Submission
 
