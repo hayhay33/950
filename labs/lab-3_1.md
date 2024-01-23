@@ -195,7 +195,7 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 ### 9. Analyzing the Data in MATLAB
 
-At this point, you should have a CSV file saved to your computer. This file should be a matrix of values with 9 columns (time + sensors), and twice as many rows as the number of seconds the program collected data. Since we have a matrix of data, let's use MATLAB (MATrix LABoratory) to make sense of all this data!
+At this point, you should have a CSV file saved to your computer. This file should be a matrix of values with 9 columns (time + sensors), and twice as many rows as the number of seconds the program collected data (if you didn't change the delay in the provided code). Since we have a matrix of data, let's use MATLAB (MATrix LABoratory) to make sense of all this data!
 
 <!-- NEED TO ADD A LINK BELOW -->
 Start by opening the script provided to you here<!-- LINK -->. Look through the script, editing values or variables where directed, and then run the script to analyze your data. You should see plots for internal and external temperatures, pressure, humidity, and acceleration!
