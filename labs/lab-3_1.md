@@ -98,6 +98,10 @@ Your battery, however, has a higher voltage than that. We now need to undo the e
 
 ### 3. Adding the Temperature Sensors
 
+<div class="primer-spec-callout danger" markdown="1">
+Every time you modify the code, you will clearly need to connect the Arduino to your computer. When your computer is connected, the battery should not be, and vice versa. Whenever you perform a calibration curve, or want to read accurate values to the SD card, you should do so with the battery connected. Because of the differences in voltage applied by a computer through USB and the 9V batteries we are using, there is some variation in the voltage values read by the Arduino from each sensor. Keep this in mind!
+</div>
+
 - [Link to TMP36 Spec Sheet](https://drive.google.com/file/d/10Lu2-s9MYqh0s0O6Nkxy8E_LDwDpnZ7T/view?usp=sharing)
 
 Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino, and read it using `analogRead()` and `Serial.println()`. Add this to the code used for measuring the battery voltage with comma-separated values. (Hint: You can use `Serial.print()` to print values without a newline character between them, which may help you print csv integers to the serial monitor for testing. Then you can just use `Serial.print(",");` to add a comma between the values).
