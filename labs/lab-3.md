@@ -212,6 +212,7 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 - [ ] A picture of your complete circuit with proper color conventions
 - [ ] A screenshot of your serial monitor once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses)
 - [ ] Screenshots or exported images of the finished plots from MATLAB (with labels!)
+- [ ] Screenshot of a schematic created in Altium of your entire completed circuit
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
