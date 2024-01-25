@@ -102,7 +102,7 @@ You know on the Arduino Nano this value will be between 0-1024, and that your ma
 Your battery, however, has a higher voltage than that. We now need to undo the effects of the voltage divider to determine the battery's original voltage. Since we used the same resistance on either side of the voltage divider, the voltage is being cut in half. Therefore, we can simply multiply the Arduino's recorded voltage by 2 to get the 9V battery's voltage. It should be somewhere between 8 and 10V.
 
 <div class="primer-spec-callout info" markdown="1">
-Note that the values displayed in the serial monitor are rounded, and don't show us as accurate of voltages as we would like. This is because the value is stored as an "int", or integer. To obtain decimal places, change this to a double.
+Note that the values displayed in the serial monitor are rounded, and don't show us as accurate of voltages as we would like. This is because the value is stored as an "int", or integer. To obtain decimal places, change this to a double!
 </div>
 
 ### 3. Adding the Temperature Sensors
@@ -113,7 +113,7 @@ Whenever you perform a calibration curve, or want to read accurate values to the
 
 - [Link to TMP36 Spec Sheet](https://drive.google.com/file/d/10Lu2-s9MYqh0s0O6Nkxy8E_LDwDpnZ7T/view?usp=sharing)
 
-Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino, and read it using `analogRead()` and `Serial.println()`. Add this to the code used for measuring the battery voltage with comma-separated values. (Hint: You can use `Serial.print()` to print values without a newline character between them, which may help you print csv integers to the serial monitor for testing. Then you can just use `Serial.print(",");` to add a comma between the values. The last line you print, which will be the last sensor column of your csv matrix, should use `Serial.println()` in order to make a new line for the next data read).
+Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino, and read it using `analogRead()` and `Serial.println()`. Add this to the code used for measuring the battery voltage with comma-separated values. (Hint: You can use `Serial.print()` to print values without a newline character between them, which may help you print csv integers to the serial monitor for testing. Then you can just use `Serial.print(",");` to add a comma between the values. The last line you print, which will be the last sensor column of your csv matrix, should use `Serial.println()` in order to make a new line for the next data read). Convert these raw values to voltages using the equations used in previous labs, then print the voltages in the aforementioned format.
 
 Here is the wiring diagram again for your reference:
 
@@ -133,15 +133,15 @@ Once you have your temperature sensors connected, it's time to make a calibratio
 Pay attention to the required supply voltage for each of these components to prevent accidental damage. You can find these values in the provided spec sheets for each individual component. In the case of the pressure sensor it is 5v.
 </div>
 
-Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided. **You only need to connect the Vin (or VCC), GND, and Vout pins.** Print the data to the Serial Monitor to ensure it is working, using `analogRead()` like before with the temperature sensors, add this to the code with the battery voltage and temperature sensors so that you now have four comma-separated values printed in one line. It may be "Voltage,Temp1,Temp2,Pressure" for example, all in one line.
+Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided. **You only need to connect the Vin (or VCC), GND, and Vout pins.** Print the data to the Serial Monitor to ensure it is working, using `analogRead()` like before with the temperature sensors, add this to the code with the battery voltage and temperature sensors so that you now have four comma-separated values printed in one line. It may be "Voltage,Temp1,Temp2,Pressure" for example, all in one line. Again, these raw values should be converted to voltages within the code, as before.
 
-The value we are printing to the serial monitor is raw, and needs calibrated. Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement.
+This data now needs to be calibrated in order to be useful! Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement.
 
 <div class="primer-spec-callout info" markdown="1">
 Note: You may simply look up the local Ann Arbor pressure using a weather app for the calibration point.
 </div>
 
-Apply this calibration curve to the code as before with the temperature sensors, adding to the string of values printed to the serial monitor. The values shouldn't be changing much, because pressure won't vary by large values while remaining at a steady altitude.
+Apply this calibration curve to the code as before with the temperature sensors, adding to the string of values printed to the serial monitor. The values shouldn't be changing much if at all, because pressure won't vary by large values while remaining at a steady altitude.
 
 ### 5. Adding the Humidity Sensor
 
@@ -149,7 +149,7 @@ Apply this calibration curve to the code as before with the temperature sensors,
 
 Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **5V pin** as the power supply.
 
-Add lines to the code from before to print the humidity data in the same comma-separated format.
+Add lines to the code from before to print the humidity data (voltages!) in the same comma-separated format.
 
 Take measurement data indoors and while walking outside to see changes. Create a calibration curve equation for this sensor and apply it to the code to print a calibrated humidity value in the serial monitor.
 
@@ -159,7 +159,7 @@ Take measurement data indoors and while walking outside to see changes. Create a
 
 Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **3.3V pin** as the power supply. Each of the axes (x, y, and z) will be connected to its own analog pin. You will not have anything connected to the ST pin.
 
-Add code to the program you've been working with to read raw values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second.
+Add code to the program you've been working with to read voltage values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second.
 
 <div class="primer-spec-callout info" markdown="1">
 To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experience 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
@@ -197,11 +197,7 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 ### 9. Analyzing the Data in MATLAB
 
-At this point, you should have a CSV file saved to your computer. This file should be a matrix of values with 9 columns (time + sensors), and twice as many rows as the number of seconds the program collected data (if you didn't change the delay in the provided code). Since we have a matrix of data, let's use MATLAB (MATrix LABoratory) to make sense of all this data!
-
-Start by opening the script provided to you [here](https://drive.google.com/file/d/1_KK009QqppcqEylwyjJgyH0OspNltvDe/view?usp=sharing). Look through the script, editing values or variables where directed, and then run the script to analyze your data. When you click run, you will be asked to enter the filename for the file containing your code. In your case it is likely `DATALOG.CSV` unless you changed the code provided to you. In order to read the file, you must make sure the file is in the same directory as the provided script you downloaded. Once you hit run, you should see plots for battery voltage, internal and external temperatures, pressure, humidity, and acceleration in each axis!
-
-In order to make sense of all this data, you'll need to apply your own calibration curves to the code. Do this by updating the variables and re-running the program.
+You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file will have voltages and your MATLAB script will apply the calibration curves to make the data useful.
 
 <div class="primer-spec-callout warning" markdown="1">
 Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
