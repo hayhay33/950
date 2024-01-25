@@ -47,7 +47,6 @@ This is the first lab completed as a team! As such, the amount of work needed to
 - [ ] 1 9V battery connector
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 - [ ] ENGR100-950 Arduino Library
-- [ ] [Provided MATLAB script](https://drive.google.com/file/d/1_KK009QqppcqEylwyjJgyH0OspNltvDe/view?usp=sharing)
 
 ## Introduction
 
@@ -61,7 +60,7 @@ The Arduino Nanos that we use in this class operate at 5V logic. This means the 
 
 ### Data Logging
 
-Our Arduino has some memory on it, but reading and writing to this memory is a rather complicated procedure, which is why we need the Arduino IDE to handle writing the code to the Arduino's memory for us. Writing variables to the Arduino's memory is not user-friendly and is difficult to read back. Therefore, we elect to instead use a microSD card, which has a far higher data capacity and allows us to easily read data on our computer. This lab will use a pre-built data logging module to write data to the microSD card in a similar way you write data out to the Arduino's Serial monitor.
+Our Arduino has some memory on it, but reading and writing to this memory is a rather complicated procedure, which is why we need the Arduino IDE to handle writing the code to the Arduino's memory for us. Writing variables to the Arduino's memory is not user-friendly and is difficult to read back. Therefore, we elect to instead use a microSD card, which has a far higher data capacity and allows us to easily read data on our computer. This lab will use a pre-built data logging module to write data to the microSD card in a similar way you write data out to the Arduino's Serial Monitor.
 
 ## Procedure
 
@@ -123,7 +122,7 @@ Here is the wiring diagram again for your reference:
 Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.
 </div>
 
-Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values.
+Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use!
 
 ### 4. Adding the Pressure Sensor
 
@@ -135,7 +134,7 @@ Pay attention to the required supply voltage for each of these components to pre
 
 Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided. **You only need to connect the Vin (or VCC), GND, and Vout pins.** Print the data to the Serial Monitor to ensure it is working, using `analogRead()` like before with the temperature sensors, add this to the code with the battery voltage and temperature sensors so that you now have four comma-separated values printed in one line. It may be "Voltage,Temp1,Temp2,Pressure" for example, all in one line. Again, these raw values should be converted to voltages within the code, as before.
 
-This data now needs to be calibrated in order to be useful! Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement.
+This data now needs to be calibrated in order to be useful! Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement. Again, save this calibration curve for later.
 
 <div class="primer-spec-callout info" markdown="1">
 Note: You may simply look up the local Ann Arbor pressure using a weather app for the calibration point.
@@ -151,7 +150,7 @@ Begin by skimming over the provided spec sheet and become familiar with the pin 
 
 Add lines to the code from before to print the humidity data (voltages!) in the same comma-separated format.
 
-Take measurement data indoors and while walking outside to see changes. Create a calibration curve equation for this sensor and apply it to the code to print a calibrated humidity value in the serial monitor.
+Take measurement data indoors and while walking outside to see changes. Create a calibration curve equation for this sensor and apply it to the code to print a calibrated humidity value in the serial monitor. Save this calibration curve.
 
 ### 6. Adding the Accelerometer
 
@@ -159,7 +158,7 @@ Take measurement data indoors and while walking outside to see changes. Create a
 
 Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **3.3V pin** as the power supply. Each of the axes (x, y, and z) will be connected to its own analog pin. You will not have anything connected to the ST pin.
 
-Add code to the program you've been working with to read voltage values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second.
+Add code to the program you've been working with to read voltage values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Save these calibration curves! Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second (or whatever the time delay is set to within the code).
 
 <div class="primer-spec-callout info" markdown="1">
 To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experience 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
@@ -209,7 +208,7 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
 - [ ] A picture of your complete circuit with proper color conventions
 - [ ] A screenshot of your serial monitor once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses)
-- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels and calibrations!).
+- [ ] Exported images of the finished plots from MATLAB (with labels and calibrations!).
 - [ ] Screenshot of a schematic created in Altium of your entire completed circuit
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
