@@ -201,6 +201,8 @@ At this point, you should have a CSV file saved to your computer. This file shou
 
 Start by opening the script provided to you [here](https://drive.google.com/file/d/1_KK009QqppcqEylwyjJgyH0OspNltvDe/view?usp=sharing). Look through the script, editing values or variables where directed, and then run the script to analyze your data. When you click run, you will be asked to enter the filename for the file containing your code. In your case it is likely `DATALOG.CSV` unless you changed the code provided to you. In order to read the file, you must make sure the file is in the same directory as the provided script you downloaded. Once you hit run, you should see plots for battery voltage, internal and external temperatures, pressure, humidity, and acceleration in each axis!
 
+In order to make sense of all this data, you'll need to apply your own calibration curves to the code. Do this by updating the variables and re-running the program.
+
 <div class="primer-spec-callout warning" markdown="1">
 Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
 </div>
@@ -211,7 +213,7 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
 - [ ] A picture of your complete circuit with proper color conventions
 - [ ] A screenshot of your serial monitor once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses)
-- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels!)
+- [ ] Screenshots or exported images of the finished plots from MATLAB (with labels and calibrations!).
 - [ ] Screenshot of a schematic created in Altium of your entire completed circuit
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
