@@ -35,8 +35,8 @@ const int accelzPin = A7;
 // For future labs, you may find it helpful to copy the above settings for additional sensors.
 // **HINT HINT WINK WINK**
 
-// This is the string that goes at the top of your csv file. It is the column headers for your spreadsheet.
-const String header = "Time (ms),Voltage (V),TMP36_1 (Raw),TMP36_2 (Raw),Pressure (raw),Humidity (raw),Accel_x (raw),Accel_y (raw),Accel_z (raw)";
+// This is the string that goes at the top of your csv file. They are the column headers for your spreadsheet.
+const String header = "Time (ms),Voltage (V),TMP36_1 (V),TMP36_2 (V),Pressure (V),Humidity (V),Accel_x (V),Accel_y (V),Accel_z (V)";
 
 #include <SPI.h>
 #include <SD.h>
@@ -73,20 +73,19 @@ void loop() {
 
     // ############### START EDITING HERE (2/3) ###############
 
-    double vDivVal = analogRead(vDivPin); // Battery voltage reading (THIS IS FROM VOLTAGE DIVIDER)
+    double vDivVal = analogRead(vDivPin); // Battery voltage reading (THIS IS FROM VOLTAGE DIVIDER AND IS RAW)
     
     double vDivAdj = ???; // What should this line be to make the vDivAdj accurately reflect the battery voltage?
 
     // ############### END EDITING HERE (2/3) ###############
 
-    double tmp1Val = analogRead(tmp1Pin); // First temperature reading (raw)
-    double tmp2Val = analogRead(tmp2Pin); // Second temperature reading (raw)
-
-    double pressVal = analogRead(pressPin); // Pressure reading (raw)
-    double humidVal = analogRead(humidPin); // Humidity reading (raw)
-    double accelxVal = analogRead(accelxPin); // X-Acceleration reading (raw)
-    double accelyVal = analogRead(accelyPin); // Y-Acceleration reading (raw)
-    double accelzVal = analogRead(accelzPin); // Z-Acceleration reading (raw)
+    double tmp1Val = analogRead(tmp1Pin) * 5 / 1023; // First temperature reading (voltage)
+    double tmp2Val = analogRead(tmp2Pin) * 5 / 1023; // Second temperature reading (voltage)
+    double pressVal = analogRead(pressPin) * 5 / 1023; // Pressure reading (voltage)
+    double humidVal = analogRead(humidPin) * 5 / 1023; // Humidity reading (voltage)
+    double accelxVal = analogRead(accelxPin) * 5 / 1023; // X-Acceleration reading (voltage)
+    double accelyVal = analogRead(accelyPin) * 5 / 1023; // Y-Acceleration reading (voltage)
+    double accelzVal = analogRead(accelzPin) * 5 / 1023; // Z-Acceleration reading (voltage)
 
     // Now let's make a nice string to write to the file.
     // This is a comma-separated value (csv) file, so we need to separate each value with a comma.
@@ -97,25 +96,25 @@ void loop() {
     // add the adjusted voltage divider value
     dataString += String(vDivAdj);
     dataString += ",";
-    // add the first raw TMP36 value
+    // add the first TMP36 value
     dataString += String(tmp1Val);
     dataString += ",";
-    // add the second raw TMP36 value
+    // add the second TMP36 value
     dataString += String(tmp2Val);
     dataString += ",";
-    // add the raw pressure value
+    // add the pressure value
     dataString += String(pressVal);
     dataString += ",";
-    // add the raw humidity value
+    // add the humidity value
     dataString += String(humidVal);
     dataString += ",";
-    // add the raw x-accel value
+    // add the x-accel value
     dataString += String(accelxVal);
     dataString += ",";
-    // add the raw y-accel value
+    // add the y-accel value
     dataString += String(accelyVal);
     dataString += ",";
-    // add the raw z-accel value
+    // add the z-accel value
     dataString += String(accelzVal);
 
     // now let's open the file again
