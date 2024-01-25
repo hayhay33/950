@@ -196,7 +196,7 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 ### 9. Analyzing the Data in MATLAB
 
-You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file will have voltages and your MATLAB script will apply the calibration curves to make the data useful.
+You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file will have voltages and your MATLAB script will apply the calibration curves to make the data useful. Consider using subplots to organize the data better!
 
 <div class="primer-spec-callout warning" markdown="1">
 Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
