@@ -122,7 +122,7 @@ Here is the wiring diagram again for your reference:
 Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.
 </div>
 
-Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use!
+Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). You can do this in the same manner as in the last lab using the cold chamber, however you should **UNPLUG THE BATTERY** so you don't have the battery in below zero temperatures. Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use!
 
 ### 4. Adding the Pressure Sensor
 
