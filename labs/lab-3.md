@@ -122,7 +122,7 @@ Here is the wiring diagram again for your reference:
 Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.
 </div>
 
-Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). You can do this in the same manner as in the last lab using the cold chamber, however you should **UNPLUG THE BATTERY** so you don't have the battery in below zero temperatures. Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use!
+Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). You can do this in the same manner as in the last lab using the cold chamber, however you should **UNPLUG THE BATTERY** so you don't have the battery in below zero temperatures. Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use! **It may be less annoying to calibrate all of the sensors at the end once you have all the sensors connected but before you have the data logger plugged in. This is up to you!**
 
 ### 4. Adding the Pressure Sensor
 
@@ -184,11 +184,11 @@ Now that you have a completed circuit, take a picture of your setup and save thi
 
 ### 8. Collecting Data
 
-With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into the cold chamber.  Wait for about 2-5 minutes to allow the temperature to adjust. Try rotating your circuit in different orientations so that each axis experiences some acceleration due to gravity, and walk outside to watch humidity change. This should provide plenty of data for all of your sensors!
+With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into the cold chamber.  Wait for about 1-2 minutes to allow the temperature to adjust. Try rotating your circuit in different orientations so that each axis experiences some acceleration due to gravity, and walk outside to watch humidity change. This should provide plenty of data for all of your sensors!
 
 Go back to the lab and unplug the 9V now (unplug the battery and leave the wires connected to your board). Carefully remove the microSD from the adapter module, and plug it into your computer. You should see a `DATALOG.CSV` file. If you do not, or the file seems corrupted or very small, delete the file, plug the microSD card back in, and watch what the Serial monitor on your computer says while running the code.
 
-Once you have a sufficiently long test (1-2 minutes) and can see that there are clear changes in the data in the file created, you are done with the hardware portion of this lab!
+Once you have a sufficiently long test (2-3 minutes) and can see that there are clear changes in the data in the file created, you are done with the hardware portion of this lab!
 
 Before returning all of your equipment, make sure you save your file on your computer!! Maybe even upload it and share it with team members so you have a backup!
 
