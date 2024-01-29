@@ -196,7 +196,7 @@ Then, delete the .csv file and any other .txt files off of the microSD card (you
 
 ### 9. Analyzing the Data in MATLAB
 
-You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file will have voltages and your MATLAB script will apply the calibration curves to make the data useful. Consider using subplots to organize the data better!
+You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for battery voltage, two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file (from the code provided to you) will have voltages and your MATLAB script will apply the calibration curves to make the data useful. Consider using subplots to organize the data better!
 
 <div class="primer-spec-callout warning" markdown="1">
 Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
@@ -206,10 +206,10 @@ Make sure you follow "common practice" Tech Comm rules, labelling all plots' axe
 
 On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 
-- [ ] A picture of your complete circuit with proper color conventions
-- [ ] A screenshot of your serial monitor once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses)
+- [ ] A picture of your complete circuit with proper color conventions.
+- [ ] A screenshot of your serial **monitor** once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses).
 - [ ] Exported images of the finished plots from MATLAB (with labels and calibrations!).
-- [ ] Screenshot of a schematic created in Altium of your entire completed circuit
+- [ ] Screenshot of a schematic created in Altium of your entire completed circuit.
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
