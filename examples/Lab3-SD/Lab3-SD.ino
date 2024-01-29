@@ -7,7 +7,7 @@
 // CS   - pin 10
 const int chipSelect = 10;
 
-// ############### START EDITING HERE (1/3) ###############
+// ############### START EDITING HERE (1/2) ###############
 // Adjust the following pins according to your setup
 
 // Pin for voltage divider
@@ -30,7 +30,7 @@ const int accelxPin = A5;
 const int accelyPin = A6;
 const int accelzPin = A7;
 
-// ############### END EDITING HERE (1/3) ###############
+// ############### END EDITING HERE (1/2) ###############
 
 // For future labs, you may find it helpful to copy the above settings for additional sensors.
 // **HINT HINT WINK WINK**
@@ -71,21 +71,21 @@ void loop() {
 
     // Note: in future labs, you may need to change this to add additional sensors.
 
-    // ############### START EDITING HERE (2/3) ###############
+    // ############### START EDITING HERE (2/2) ###############
 
     double vDivVal = analogRead(vDivPin); // Battery voltage reading (THIS IS FROM VOLTAGE DIVIDER AND IS RAW)
     
     double vDivAdj = ???; // What should this line be to make the vDivAdj accurately reflect the battery voltage?
 
-    // ############### END EDITING HERE (2/3) ###############
+    // ############### END EDITING HERE (2/2) ###############
 
-    double tmp1Val = analogRead(tmp1Pin) * 5 / 1023; // First temperature reading (voltage)
-    double tmp2Val = analogRead(tmp2Pin) * 5 / 1023; // Second temperature reading (voltage)
-    double pressVal = analogRead(pressPin) * 5 / 1023; // Pressure reading (voltage)
-    double humidVal = analogRead(humidPin) * 5 / 1023; // Humidity reading (voltage)
-    double accelxVal = analogRead(accelxPin) * 5 / 1023; // X-Acceleration reading (voltage)
-    double accelyVal = analogRead(accelyPin) * 5 / 1023; // Y-Acceleration reading (voltage)
-    double accelzVal = analogRead(accelzPin) * 5 / 1023; // Z-Acceleration reading (voltage)
+    double tmp1Val = analogRead(tmp1Pin) * 5.0 / 1023.0; // First temperature reading (voltage)
+    double tmp2Val = analogRead(tmp2Pin) * 5.0 / 1023.0; // Second temperature reading (voltage)
+    double pressVal = analogRead(pressPin) * 5.0 / 1023.0; // Pressure reading (voltage)
+    double humidVal = analogRead(humidPin) * 5.0 / 1023.0; // Humidity reading (voltage)
+    double accelxVal = analogRead(accelxPin) * 5.0 / 1023.0; // X-Acceleration reading (voltage)
+    double accelyVal = analogRead(accelyPin) * 5.0 / 1023.0; // Y-Acceleration reading (voltage)
+    double accelzVal = analogRead(accelzPin) * 5.0 / 1023.0; // Z-Acceleration reading (voltage)
 
     // Now let's make a nice string to write to the file.
     // This is a comma-separated value (csv) file, so we need to separate each value with a comma.
@@ -123,13 +123,6 @@ void loop() {
     if (dataFile) {
         dataFile.println(dataString);
         dataFile.close();
-
-        // ############### START EDITING HERE (3/3) ###############
-
-        // if you want to print to the serial port as well, uncomment the following line...
-        // Serial.println(dataString);
-
-        // ############### END EDITING HERE (3/3) ###############
     }
     // if the file isn't open, pop up an error:
     else {
