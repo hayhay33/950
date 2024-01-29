@@ -6,7 +6,7 @@ latex: true
 # Lab 3: Creating a Standalone Arduino and Adding Sensors
 
 <div class="primer-spec-callout danger" markdown="1">
-This is the first lab completed as a team! As such, the amount of work needed to complete it is slightly higher than previous labs. The completion of this lab will be made MUCH easier if you carefully read through this manual and complete it in steps. You may split your team into two groups, with each group having their own breadboard and Arduino if you would like, but it is not required. Think about how you would bring these two groups together in the end if you pursue this option!
+This is the first lab completed as a team! As such, the amount of work needed to complete it is slightly higher than previous labs. The completion of this lab will be made MUCH easier if you carefully read through this manual and complete it in steps.
 </div>
 
 ## Contents 
