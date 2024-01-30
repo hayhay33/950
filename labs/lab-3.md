@@ -9,13 +9,6 @@ latex: true
 This is the first lab completed as a team! As such, the amount of work needed to complete it is slightly higher than previous labs. The completion of this lab will be made MUCH easier if you carefully read through this manual and complete it in steps.
 </div>
 
-<div class="primer-spec-callout info" markdown="1">
-If you would like to split your team into two groups and complete this procedure in two parts, follow the links throughout the lab labeled as "Group A" or "Group B", and assign two halves of your team as group A and group B. This is not required, and if you choose to all work together as one group, ignore those links.
-</div>
-
-- [Group A - Step 1](#1-powering-the-arduino)
-- [Group B - Step 1](#3-adding-the-temperature-sensors)
-
 ## Contents 
 
 - [Lab 3: Creating a Standalone Arduino and Adding Sensors](#lab-3-creating-a-standalone-arduino-and-adding-sensors)
@@ -90,8 +83,6 @@ As one last check that everything is working before we move on, upload the File 
 <div class="primer-spec-callout info" markdown="1">
 In the next lab we will go over creating a more reliable power source using a separate power circuit. For now, this will do, just take note that sensor readings may fluctuate based on whether the Arduino is powered by a battery or by your computer, and whether or not all of the sensors are plugged in and drawing power. More on this later!
 </div>
-
-- [Group A - Step 2](#7-adding-the-microsd-card-adapter-module)
 
 ### 2. Measuring Battery Voltage
 
@@ -173,8 +164,6 @@ Add code to the program you've been working with to read voltage values from eac
 To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experiencing 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
 </div>
 
-**For teams working in two groups: Group B should now meet with Group A once they have finished testing the SD logger, join your breadboards together and run jumpers to make everything run on just one Arduino.**
-
 ### 7. Adding the MicroSD Card Adapter Module
 
 Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
@@ -184,11 +173,6 @@ Unlike the other sensors and modules we have used so far, the MicroSD module we 
 While your Arduino is powered off and disconnected from the 9V, plug your module in as shown above. The Arduino pins for this **DO** matter and cannot easily be changed, unlike the analog pins.
 
 Plug your microSD card into your computer and ensure that it is empty. If there are files on the card, delete them and empty the trash. You should always clear the card, empty the trash while the card is still inserted, and properly eject it before removing the card from your computer.
-
-<div class="primer-spec-callout info" markdown="1">
-For teams working in two groups (all others IGNORE):
-Group A, at this point you will need to test your SD card logger, but the other half of your team is still working on hooking up sensors. To test your logger in the meantime, open the example at File → Examples → ENGR100-950 → Lab3-SDtester. Go ahead and put the microSD into the adapter module and run/upload this example code. If you receive an error code or encounter any sort of issue, work on debugging it and ensuring everything is hooked up correctly. Once the script has run for a few seconds and you receive no errors, unplug your computer, and then remove the SD card. Open the file stored on the card, which should be a CSV file named DATALOG.CSV. Open the file, it should have example headers of varying sensors, with each column being filled with the same number. If this looks correct, wait to proceed with the next steps until Group B arrives at this same point.
-</div>
 
 Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-950 → Lab3-SD.
 
