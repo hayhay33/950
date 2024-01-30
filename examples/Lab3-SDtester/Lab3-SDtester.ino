@@ -57,7 +57,7 @@ void loop() {
     dataString += String(millis());
     dataString += ",";
     // add the adjusted voltage divider value
-    dataString += String(vDivAdj);
+    dataString += String(vDivVal);
     dataString += ",";
     // add the first TMP36 value
     dataString += String(tmp1Val);
