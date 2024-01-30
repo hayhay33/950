@@ -3,7 +3,7 @@ layout: spec
 latex: true
 ---
 
-# Lab 3: Creating a Standalone Arduino and Adding Sensors
+# Lab 3: Group A Portion
 
 <div class="primer-spec-callout danger" markdown="1">
 This is the first lab completed as a team! As such, the amount of work needed to complete it is slightly higher than previous labs. The completion of this lab will be made MUCH easier if you carefully read through this manual and complete it in steps.
@@ -11,56 +11,28 @@ This is the first lab completed as a team! As such, the amount of work needed to
 
 ## Contents 
 
-- [Lab 3: Creating a Standalone Arduino and Adding Sensors](#lab-3-creating-a-standalone-arduino-and-adding-sensors)
+- [Lab 3: Group A Portion](#lab-3-group-a-portion)
   - [Contents](#contents)
   - [Materials](#materials)
-  - [Introduction](#introduction)
-    - [Arduino Power Requirements](#arduino-power-requirements)
-    - [Data Logging](#data-logging)
   - [Procedure](#procedure)
     - [1. Powering the Arduino](#1-powering-the-arduino)
     - [2. Measuring Battery Voltage](#2-measuring-battery-voltage)
-    - [3. Adding the Temperature Sensors](#3-adding-the-temperature-sensors)
-    - [4. Adding the Pressure Sensor](#4-adding-the-pressure-sensor)
-    - [5. Adding the Humidity Sensor](#5-adding-the-humidity-sensor)
-    - [6. Adding the Accelerometer](#6-adding-the-accelerometer)
-    - [7. Adding the MicroSD Card Adapter Module](#7-adding-the-microsd-card-adapter-module)
-    - [8. Collecting Data](#8-collecting-data)
-    - [9. Analyzing the Data in MATLAB](#9-analyzing-the-data-in-matlab)
-  - [Submission](#submission)
+    - [3. Adding the MicroSD Card Adapter Module](#3-adding-the-microsd-card-adapter-module)
 
 ## Materials
 
 - [ ] 1 Arduino Nano
 - [ ] 1 Breadboard
 - [ ] 1 Programming Cable (and adapters if necessary)
-- [ ] 2 TMP36 Temperature Sensors
-- [ ] 1 Pressure Sensor
-- [ ] 1 Humidity Sensor
-- [ ] 1 Accelerometer
 - [ ] 1 MicroSD Card
 - [ ] 1 Data Logger
 - [ ] 1 MicroSD Card - USB Adapter
-- [ ] 2 1k$$\Omega$$ resistors
 - [ ] A handful of jumper wires
+- [ ] 2 1k$$\Omega$$ resistors
 - [ ] 1 9V battery
 - [ ] 1 9V battery connector
 - [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
 - [ ] ENGR100-950 Arduino Library
-
-## Introduction
-
-So far, every time we have used our Arduino to log data, we have read the data through Arduino's Serial monitor, and have powered the Arduino via our computer's USB port. While this has worked so far, our end goal is to send these Arduinos on weather ballons! We cannot use a computer for power and data logging for that!
-
-This lab can be broken down into two main sections, one in which we learn to power the board via a battery and estimate the battery's capacity or charge, and one where we record Arduino sensor data onto a microSD card. At the end of this lab, you should have all the knowledge you need to make a fully portable temperature, pressure, humidity, and acceleration logger.
-
-### Arduino Power Requirements
-
-The Arduino Nanos that we use in this class operate at 5V logic. This means the pins coming off of it, like the digital pins, are all at 5Vs. The Arduino, however, has circuitry inside it that lets it take a range of voltages as input. This is called the Vin pin, and takes a voltage between 7-12V. The Arduino then internally converts that down to a safer 5V level for its own operations. For this lab, we will be powering our Arduino Nano with a 9V battery.
-
-### Data Logging
-
-Our Arduino has some memory on it, but reading and writing to this memory is a rather complicated procedure, which is why we need the Arduino IDE to handle writing the code to the Arduino's memory for us. Writing variables to the Arduino's memory is not user-friendly and is difficult to read back. Therefore, we elect to instead use a microSD card, which has a far higher data capacity and allows us to easily read data on our computer. This lab will use a pre-built data logging module to write data to the microSD card in a similar way you write data out to the Arduino's Serial Monitor.
 
 ## Procedure
 
@@ -104,67 +76,7 @@ Your battery, however, has a higher voltage than that. We now need to undo the e
 Note that the values displayed in the serial monitor are rounded, and don't show us as accurate of voltages as we would like. This is because the value is stored as an "int", or integer. To obtain decimal places, change this to a double, and when applying any calculations (such as converting from raw values to voltages) put .0 at the end to let the code know you are trying to obtain decimal values. Ex. "value * (10.0 / 1023.0);"
 </div>
 
-### 3. Adding the Temperature Sensors
-
-<div class="primer-spec-callout danger" markdown="1">
-Whenever you perform a calibration curve, or want to read accurate values to the SD card, you should do so with the battery connected. Because of the differences in voltage applied by a computer through USB and the 9V batteries we are using, there is some variation in the voltage values read by the Arduino from each sensor. For this lab, since you don't have an SD logger connected (yet!) just calibrate using the serial monitor through USB. Keep this in mind for future labs!
-</div>
-
-- [Link to TMP36 Spec Sheet](https://drive.google.com/file/d/10Lu2-s9MYqh0s0O6Nkxy8E_LDwDpnZ7T/view?usp=sharing)
-
-Just like we did in the last lab, we now need to plug in the TMP36 to an analog pin on the Arduino, and read it using `analogRead()` and `Serial.println()`. Add this to the code used for measuring the battery voltage with comma-separated values. (Hint: You can use `Serial.print()` to print values without a newline character between them, which may help you print csv integers to the serial monitor for testing. Then you can just use `Serial.print(",");` to add a comma between the values. The last line you print, which will be the last sensor column of your csv matrix, should use `Serial.println()` in order to make a new line for the next data read). Convert these raw values to voltages using the equations used in previous labs, then print the voltages in the aforementioned format.
-
-Here is the wiring diagram again for your reference:
-
-[![TMP36 Pinout](https://cdn-learn.adafruit.com/assets/assets/000/000/471/large1024/temperature_tmp36pinout.gif?1447975787)](https://learn.adafruit.com/tmp36-temperature-sensor/overview)
-
-<div class="primer-spec-callout warning" markdown="1">
-Do this process twice to record data from two TMP36 sensors. When we launch our weather balloons we will want to measure the internal temperature of our payload and the external temperature of the atmosphere.
-</div>
-
-Once you have your temperature sensors connected, it's time to make a calibration curve (technically you should make two separate calibration curves for each TMP36 since they may have some variation, but they should be relatively similar). You can do this in the same manner as in the last lab using the cold chamber. Enter these calibration curves into your Arduino code by modifying the temperature variables with a slope-intercept equation, and verify that the serial monitor is producing realistic temperature values. Save these calibration curves somewhere for later use! **It may be less annoying to calibrate all of the sensors at the end once you have all the sensors connected but before you have the data logger plugged in. This is up to you!**
-
-### 4. Adding the Pressure Sensor
-
-- [Link to MPX4115 Spec Sheet](https://drive.google.com/file/d/1HvO6ww0i4jqZtf4NJvgjcQmIwZw6AqbE/view?usp=sharing)
-
-<div class="primer-spec-callout info" markdown="1">
-Pay attention to the required supply voltage for each of these components to prevent accidental damage. You can find these values in the provided spec sheets for each individual component. In the case of the pressure sensor it is 5v.
-</div>
-
-Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided. **You only need to connect the Vin (or VCC), GND, and Vout pins.** Print the data to the Serial Monitor to ensure it is working, using `analogRead()` like before with the temperature sensors, add this to the code with the battery voltage and temperature sensors so that you now have four comma-separated values printed in one line. It may be "Voltage,Temp1,Temp2,Pressure" for example, all in one line. Again, these raw values should be converted to voltages within the code, as before.
-
-This data now needs to be calibrated in order to be useful! Take a measurement and create a calibration curve equation for this sensor, assuming that a measurement of 0V maps to 0 pressure for the other measurement. Again, save this calibration curve for later.
-
-<div class="primer-spec-callout info" markdown="1">
-Note: You may simply look up the local Ann Arbor pressure using a weather app for the calibration point.
-</div>
-
-Apply this calibration curve to the code as before with the temperature sensors, adding to the string of values printed to the serial monitor. The values shouldn't be changing much if at all, because pressure won't vary by large values while remaining at a steady altitude.
-
-### 5. Adding the Humidity Sensor
-
-- [Link to HIH-4030 Spec Sheet](https://drive.google.com/file/d/1AbuDJoNI-4D2zUW1M4IfG_zt5Is2a3Eh/view?usp=sharing)
-
-Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **5V pin** as the power supply.
-
-Add lines to the code from before to print the humidity data (voltages!) in the same comma-separated format.
-
-Take measurement data indoors and while walking outside to see changes. Create a calibration curve equation for this sensor and apply it to the code to print a calibrated humidity value in the serial monitor. Save this calibration curve.
-
-### 6. Adding the Accelerometer
-
-- [Link to ADXL335 Spec Sheet](https://drive.google.com/file/d/1nYnJopSdXv7brn2TT8iLgIH01D7TD_NQ/view?usp=sharing)
-
-Begin by skimming over the provided spec sheet and become familiar with the pin layout. Connect the sensor to the Arduino, based on the pin-out provided and using the **3.3V pin** as the power supply. Each of the axes (x, y, and z) will be connected to its own analog pin. You will not have anything connected to the ST pin.
-
-Add code to the program you've been working with to read voltage values from each of the three axes. Then perform a two-point calibration for each axis individually, and update the code to print the new calibrated values in the same comma-delimited format as before. Save these calibration curves! Take a screenshot of the serial monitor printing out a string of data from all of the sensors in the same line, every half second (or whatever the time delay is set to within the code).
-
-<div class="primer-spec-callout info" markdown="1">
-To perform a calibration curve of the accelerometer, take note of the axes as labeled on the top of the sensor. Holding the sensor so that only one axis is experiencing acceleration due to gravity, record the output value as -1g (g being acceleration due to gravity). Then flip it over 180 degrees so that it is experiencing 1g, and record this value as your second point. Apply these calibration curves to the code from before in csv format.
-</div>
-
-### 7. Adding the MicroSD Card Adapter Module
+### 3. Adding the MicroSD Card Adapter Module
 
 Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
 
@@ -174,45 +86,10 @@ While your Arduino is powered off and disconnected from the 9V, plug your module
 
 Plug your microSD card into your computer and ensure that it is empty. If there are files on the card, delete them and empty the trash. You should always clear the card, empty the trash while the card is still inserted, and properly eject it before removing the card from your computer.
 
-Once everything is wired up, put your microSD card into the adapter module and plug in your Arduino. At this point you should modify and upload the code found in File → Examples → ENGR100-950 → Lab3-SD.
-
-Please read through the comments of this code file, as you will be adding additional sensors and modifying this file on your own. In this lab, you may also need to change the analog pins that are the defaults for all of your sensors.
-
-There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
-
-Now that you have a completed circuit, take a picture of your setup and save this for your submission file. **(Remember, wires and rails should follow "common practice" mentioned earlier.)**
-
-### 8. Collecting Data
-
-With everything plugged into the 9V and running, unplug the Arduino from your computer. Enjoy the portability of your new breadboard and walk around the building a little bit. Get the temperature to change dramatically by putting your sensor board into the cold chamber.  Wait for about 1-2 minutes to allow the temperature to adjust. Try rotating your circuit in different orientations so that each axis experiences some acceleration due to gravity, and walk outside to watch humidity change. This should provide plenty of data for all of your sensors!
-
-Go back to the lab and unplug the 9V now (unplug the battery and leave the wires connected to your board). Carefully remove the microSD from the adapter module, and plug it into your computer. You should see a `DATALOG.CSV` file. If you do not, or the file seems corrupted or very small, delete the file, plug the microSD card back in, and watch what the Serial monitor on your computer says while running the code.
-
-Once you have a sufficiently long test (2-3 minutes) and can see that there are clear changes in the data in the file created, you are done with the hardware portion of this lab!
-
-Before returning all of your equipment, make sure you save your file on your computer!! Maybe even upload it and share it with team members so you have a backup!
-
-Then, delete the .csv file and any other .txt files off of the microSD card (you can leave any folders) so that other teams in future labs have to actually do the lab themselves, and don't just steal your data!
-
-### 9. Analyzing the Data in MATLAB
-
-You should have a MATLAB script saved from an in-class exercise. Use this MATLAB script to process and analyze the data you collected earlier in the lab. You should create plots for battery voltage, two temperature sensors, a humidity sensor, a pressure sensor, and each axis from the accelerometer. These plots should be titled, axes labeled, and calibration curves applied so that they contain the proper units. Make sure to use legends if you have more than one line on a single graph (such as if you put the temperature sensors together). Again, to reiterate, your CSV file (from the code provided to you) will have voltages and your MATLAB script will apply the calibration curves to make the data useful. Consider using subplots to organize the data better!
+While power is disconnected from the Arduino, go ahead and insert the microSD card into the adapter module. Plug in the Arduino, open the file at File -> Examples -> ENGR100-950 -> Lab3-SDtester and upload/run it. This script will throw an error statement in the serial monitor if the SD logger is not working properly. Once this script runs and appears to have worked for a few moments, go ahead and disconnect power, remove the SD card, and open the contents on your computer. You should see a file titled `DATALOG.CSV` which should be a CSV file with sample headers (names of the sensors we are using) and rows of data that are numbered 0-7 for each column. If this appears correct, then congratulations, you have successfully connected your SD logger and you are ready to meet up with Group B once they have finished their part!
 
 <div class="primer-spec-callout warning" markdown="1">
-Make sure you follow "common practice" Tech Comm rules, labelling all plots' axes and titles, and add legends where necessary.
+When Group B is ready to move on, take both of your breadboards and move all the jumpers running from their Arduino into the same pins on your Arduino, so that everything is wired into one microcontroller (you need not physically move the components, but rather just their jumpers, leaving two breadboards side by side. They can lock together!). Once this is done, follow the link below to jump back into the normal lab manual together.
 </div>
 
-## Submission
-
-On Canvas, you will submit ***ONE PDF*** that will include all of the following:
-
-- [ ] A picture of your complete circuit with proper color conventions.
-- [ ] A screenshot of your serial **monitor** once all sensors are printing values in the same line (you may unplug the Arduino so the data pauses).
-- [ ] Exported images of the finished plots from MATLAB (with labels and calibrations!).
-- [ ] Screenshot of a schematic created in Altium of your entire completed circuit.
-
-To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
-
-<div class="primer-spec-callout danger" markdown="1">
-Submitting anything other than a single PDF may result in your work not being graded or your scores being heavily delayed.
-</div>
+- [Groups A & B Lab Manual - Finishing Steps](/labs/lab-3#7-adding-the-microsd-card-adapter-module)

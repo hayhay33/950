@@ -173,6 +173,10 @@ To perform a calibration curve of the accelerometer, take note of the axes as la
 
 ### 7. Adding the MicroSD Card Adapter Module
 
+<div class="primer-spec-callout info" markdown="1">
+For teams working in two separate groups (all others ignore this message): You should already have your SD logger wired in, so once you have all of your components running on one Arduino/computer, skip down to "Plug your microSD card into your computer..."
+</div>
+
 Unlike the other sensors and modules we have used so far, the MicroSD module we are using uses the Arduino's digital pins. Luckily for us, there are libraries (that you should have installed when following the tutorial and initially setting up your Arduino IDE), that handle all the complicated digital interfacing for us. All we need to know is which pins to plug the adapter module into.
 
 ![MicroSD Adapter Module Wiring](../media/SD-Card-Wiring.png){: .invert-colors-in-dark-mode }
