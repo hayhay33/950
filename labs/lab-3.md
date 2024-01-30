@@ -64,6 +64,13 @@ Our Arduino has some memory on it, but reading and writing to this memory is a r
 
 ## Procedure
 
+<div class="primer-spec-callout danger" markdown="1">
+Due to the length of this lab, we are giving you the option to split into two groups within your team. This is not required, and if you would like to work all together, simply continue on with the lab manual. If you would like to pursue this option, split into two groups, and assign one group to be Group A, and one group to be Group B, then follow the links below to modified lab manuals.
+</div>
+
+[Link to Group A Lab Manual](/labs/lab-3GroupA.md)
+[Link to Group B Lab Manual](/labs/lab-3GroupB.md)
+
 ### 1. Powering the Arduino
 
 To start, we want to power our Arduino with the 9V battery. Plug your Arduino into your breadboard, and plug the 9V into it's connection clip. It should only fit on one way, as the 9V's two terminals are different shapes.
