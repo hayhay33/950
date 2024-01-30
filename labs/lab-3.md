@@ -191,7 +191,7 @@ Please read through the comments of this code file, as you will be adding additi
 
 There is a delay statement at the end of the loop.  Think about how many data points will be taken if you take data for 5 minutes.  Will you need data this often?  More often?  Less often?  Adjust the delay accordingly.
 
-Now that you have a completed circuit, take a picture of your setup and save this for your submission file. **(Remember, wires and rails should follow "common practice" mentioned earlier.)**
+**Now that you have a completed circuit, take a picture of your setup and save this for your submission file. (Remember, wires and rails should follow "common practice" mentioned earlier.)**
 
 ### 8. Collecting Data
 
