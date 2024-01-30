@@ -68,8 +68,8 @@ Our Arduino has some memory on it, but reading and writing to this memory is a r
 Due to the length of this lab, we are giving you the option to split into two groups within your team. This is not required, and if you would like to work all together, simply continue on with the lab manual. If you would like to pursue this option, split into two groups, and assign one group to be Group A, and one group to be Group B, then follow the links below to modified lab manuals.
 </div>
 
-[Link to Group A Lab Manual](/labs/lab-3GroupA.md)
-[Link to Group B Lab Manual](/labs/lab-3GroupB.md)
+- [Link to Group A Lab Manual](/labs/lab-3GroupA)
+- [Link to Group B Lab Manual](/labs/lab-3GroupB)
 
 ### 1. Powering the Arduino
 
