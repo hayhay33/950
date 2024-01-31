@@ -16,7 +16,8 @@ latex: true
   - [Introduction](#introduction)
   - [Lab Overview](#lab-overview)
   - [Procedure](#procedure)
-    - [Power Management](#1-power-management)
+    - [Power Management](#power-management)
+    - [Battery Power](#battery-power)
   - [Submission](#submission)
 
 ## Materials
