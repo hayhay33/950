@@ -14,7 +14,6 @@ latex: true
     - [Power Supply](#power-supply)
     - [Electrostatic Discharge](#electrostatic-discharge)
   - [Introduction](#introduction)
-  - [Lab Overview](#lab-overview)
   - [Procedure](#procedure)
     - [Power Management](#power-management)
     - [Battery Power](#battery-power)
