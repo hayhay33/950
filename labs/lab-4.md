@@ -58,7 +58,7 @@ One type of voltage regulator is one we’ve discussed: the voltage divider. Pre
 
 Zener diodes have a characteristic property wherein they allow current flow in the same direction as standard diodes (from anode to cathode) but they also allow current opposite direction once a “Zener Voltage” is reached. Once this voltage is reached, they operate reliably at the same voltage for increasing current levels. The I-V curve for a zener diode with a zener voltage of 17.1V is below. Notice how once the Zener Voltage is reached the voltage level is nearly constant for increasing current. The zener diodes used on voltage regulators have their zener voltages at the specified output voltage to ensure constant voltage at the output.
 
-![Zener Diode IV](/media/zenerchar.png)
+![Zener Diode IV](/media/zener-diode-IV.png)
 
 ## Procedure
 
@@ -88,7 +88,7 @@ A staff member will work with you on replacing the battery with a power supply.
 
 The figure below shows a lab **power supply.** This is a device we frequently use in labs to power circuits: sometimes to avoid using the USB cable and a computer for power, and sometimes when we need a higher voltage than can be provided by the Arduino. There are multiple channels on the power supply, to allow for powering more than one device or produce more than one voltage at the same time.
 
-![Power Supply](/media/power_supply.jpeg)
+![Power Supply](/media/power_supply.png)
 
 You will be using the power supply on your workbenches today to power portions on your circuit. Please do **NOT** connect the power supply to the board until looked at by one of the instructors. The power supply has been current-limited at 500 mA and can cause some serious damage if used improperly. Please call the instructor to have them examine the breadboard before connecting to power. Also, do not increase the power supply voltage above 7.4V.
 
