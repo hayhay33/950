@@ -25,9 +25,14 @@ latex: true
 - [ ] 1 Breadboard
 - [ ] 5.0V LDO
 - [ ] 3.3V LDO
+- [ ] 22 micro-Farad Capacitor
+- [ ] Resistors for voltage divider circuit
+- [ ] 9V Battery
+- [ ] 7.4V LiIon Rechargable Battery
 - [ ] 1 Programming Cable (and adapters if necessary)
-- [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library).
+- [ ] A computer with the Arduino IDE [installed](/tutorials#arduino-ide-install) and [setup](/tutorials#arduino-library)
 - [ ] ENGR100-950 Arduino Library
+- [ ] Completed sensor board from Lab 3
 
 ## Safety
 
