@@ -38,6 +38,8 @@ latex: true
 
 This lab involves working with a power supply which can provide higher voltages/currents than the Arduinos! Read the following sections carefully to maintain your safety and the safety of the components we are using.
 
+It is very easy to accidentally short batteries when wires are connected to them. **When not using the 9V and 7.4 batteries, make sure that they have wire ends that are taped, so the battery can not be shorted!**
+
 ### Electrostatic Discharge
 
 In this lab we will start taking precautions when dealing with electronics as there is possibly of ESDs damaging components. When you eventually start soldering your PCB’s, you will be dealing with much smaller components and will thus absolutely need to take ESD precautions. For the subteam that will be working with the power portion of the lab: whoever is touching and interacting with the circuit will be needing to wear an ESD bracelet at all times.
@@ -134,10 +136,11 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 - [ ] A short description of your power supply tests with the cutoff voltages that you found.
 - [ ] A picture of your completed power board.
 - [ ] A picture of your completed consolidated board.
+- [ ] A picture of your battery with the ends of wires safely taped so that they can not short.
 - [ ] A (complete) system-level block diagram of your completed system.  The color coding on your system-level block diagram should match the color coding on your board.  You should be able to look at your picture of your board and your system-level block diagram and understand what is going on with your board. Not every line need to be drawn though (like ground lines should NOT be on the block diagram).
 - [ ] A (complete) schematic of your completed system.
 - [ ] A screenshot of your (battery, 5V, and 3.3V) voltage readings from your Arduino (serial monitor) on your power board.
-- [ ] Matlab (or Python or whatever) plots that show data from your completed board going into the cold chamber for at least 5 minutes.
+- [ ] Nice plots that show data from your completed board going into the cold chamber for at least 5 minutes.  The data should be calibrated with plots in actual geophysical units, including time (in minutes).
 - [ ] Discuss whether the battery voltaged changed as it got colder. Is there any relationship between temperature and battery voltage?
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
