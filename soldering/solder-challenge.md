@@ -3,7 +3,7 @@ layout: spec
 latex: true
 ---
 
-# Soldering Challenge
+# Solder Challenge
 
 ## Contents
 
