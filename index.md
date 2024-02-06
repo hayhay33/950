@@ -18,13 +18,12 @@ View the syllabus [here](/syllabus)
 The labs will be made publicly visible as they are released in the week leading up to lab. You can find them linked here:
 
 [Lab Manuals](/labs/)
-<!--
+
 ## Solder Challenge
 
 Soldering tutorial and challenge to gain or improve soldering abilites.
 
-[Solder Challenge Tutorial](/soldering/solder-challenge.md)
--->
+**Coming Soon**
 
 ## Project
 
