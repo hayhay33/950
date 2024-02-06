@@ -19,6 +19,12 @@ The labs will be made publicly visible as they are released in the week leading 
 
 [Lab Manuals](/labs/)
 
+## Solder Challenge
+
+Soldering tutorial and challenge to gain or improve soldering abilites.
+
+[Solder Challenge Tutorial](/soldering/solder-challenge.md)
+
 ## Project
 
 The full project specification, including PDR, Go/No-Go tests, poster, and final report is here:
