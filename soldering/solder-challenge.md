@@ -3,7 +3,7 @@ layout: spec
 latex: true
 ---
 
-# Lab 2: Temperature Sensing
+# Soldering Challenge
 
 ## Contents
 
