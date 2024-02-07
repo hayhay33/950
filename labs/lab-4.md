@@ -62,7 +62,7 @@ Zener diodes have a characteristic property wherein they allow current flow in t
 
 ## Procedure
 
-This lab will involve building a circuit to test the behavior of two low-dropout (LDO) regulators, consolidating your sensors and GPS in to the first version of your final breadboard, and integrating the LDOs on to the breadboard to supply your Arduino with onboard power. To do this most efficiently, we recommend two to three team members work on the LDO testing circuit and the rest of the team members work on breadboard consolidation with the SD card and calibrating (completing lab 3). Your team will work together to integrate the LDOs to your sensor board (part 2). Members are welcome to work on what they’re most interested in, but no one team member should be assigned a task to work on alone. If you don’t have enough team members, consolidate teams and have two teams work together on both the boards.
+This lab will involve building a circuit to test the behavior of two low-dropout (LDO) regulators, consolidating your sensors in to the first version of your final breadboard, and integrating the LDOs on to the breadboard to supply your Arduino with onboard power. To do this most efficiently, we recommend two to three team members work on the LDO testing circuit and the rest of the team members work on breadboard consolidation with the SD card and calibrating (completing lab 3). Your team will work together to integrate the LDOs to your sensor board (part 2). Members are welcome to work on what they’re most interested in, but no one team member should be assigned a task to work on alone. If you don’t have enough team members, consolidate teams and have two teams work together on both the boards.
 
 ### Power Management
 
@@ -98,7 +98,7 @@ The wires to the power supply should already be connected (Red = positive and Bl
 Do not turn on the power supply until your connections have been verified by an instructor!
 </div>
 
-Slowly reduce the voltage on the power supply (you can use the “Coarse” knob but rotate it slowly). Reduce it to 0V in increments of 1V, using a multimeter to record the voltage on the 5V and the 3.3V lines. **Note the power supply voltage at which the 5V line no longer reads 5V and the voltage at which the 3.3V line no longer reads 3.3V.**
+Slowly reduce the voltage on the power supply (you can use the “Coarse” knob but rotate it slowly). Reduce it to 0V in increments of 1V, using a multimeter to record the voltage on the 5V and the 3.3V lines. **Note the power supply voltage at which the 5V line no longer reads 5V and the voltage at which the 3.3V line no longer reads 3.3V.** There will be some variation, so let's assume that once it is more than .15V away from the value it has sufficiently dropped.
 
 **Turn the power supply off!**
 
@@ -106,20 +106,22 @@ Slowly reduce the voltage on the power supply (you can use the “Coarse” knob
 
 Disconnect the power supply, and add an Arduino to your power board. Make two voltage divider circuits, one hooked up to the Vin pin of the 5V LDO (i.e., this one will measure (half) the battery voltage) and one hooked up to the Vout pin of the 5V LDO (i.e., this should measure (half) 5V). Attach the output pin of the 3.3V LDO to an analog pin on the Arduino also.  You should now be able to make a program that will measure the battery voltage, the 5V line voltage, and the 3.3V line voltage.
 
-** Remember to use color coding for your power lines and data lines. This will dramatically assist you in the debugging of your system if things don't work.**
+**Remember to use color coding for your power lines and data lines. This will dramatically assist you in the debugging of your system if things don't work.**
 
 <div class="primer-spec-callout danger" markdown="1">
 Note that the output lines of the 5V and 3.3V lines are now your main power rails.  The 5V LDO output line should be connected directly to the 5V line on the Arduino and there should be NO connections to the Vin pin on the Arduino.  The 3.3V line does NOT get connected to the 3.3V line on the Arduino!
 </div>
 
-Once you have verified that everything it hooked up as it should be, add a 7.4V, 500mA battery to the top rail of your bread-board to power your LDO circuit and power on your Arduino. When you connect your battery, everything should turn on and start reporting data (although you can’t see it, since your computer is not hooked up yet).  Hook up the USB to the Arduio and measure the battery voltage, 5V line voltage, and 3.3V line voltage using a program. **Take a screenshot that shows that you are measuring the proper voltages on the different lines!**
+Once you have verified that everything is hooked up as it should be, add a 7.4V, 500mA battery to the top rail of your bread-board to power your LDO circuit and power on your Arduino. When you connect your battery, everything should turn on and start reporting data (although you can’t see it, since your computer is not hooked up yet).  Hook up the USB to the Arduino and measure the battery voltage, 5V line voltage, and 3.3V line voltage using a program. **Take a screenshot that shows that you are measuring the proper voltages on the different lines!**
 
 **Take some pictures of this beautiful power board!**
 
 
 ## Consolidation
 
-NOTE: **We are now going to disconnect power whenever we rewire components on our breadboard!**
+<div class="primer-spec-callout danger" markdown="1">
+NOTE: We are now going to disconnect power whenever we rewire components on our breadboard!
+</div>
 
 Once you have all of your sensors working and saving data to the SD card on one breadboard, and your power system working on another breadboard, consolidate the breadboards.  You should then have battery supplied 5V and 3.3V rails (with grounds), a single Arduino, an SD Card writer, and a bunch of sensors.  You can have all of these systems across multiple breadboards.
 
@@ -137,11 +139,11 @@ On Canvas, you will submit ***ONE PDF*** that will include all of the following:
 - [ ] A picture of your completed power board.
 - [ ] A picture of your completed consolidated board.
 - [ ] A picture of your battery with the ends of wires safely taped so that they can not short.
-- [ ] A (complete) system-level block diagram of your completed system.  The color coding on your system-level block diagram should match the color coding on your board.  You should be able to look at your picture of your board and your system-level block diagram and understand what is going on with your board. Not every line need to be drawn though (like ground lines should NOT be on the block diagram).
-- [ ] A (complete) schematic of your completed system.
+- [ ] A (complete) system-level block diagram of your completed system.  The color coding on your system-level block diagram should match the color coding on your board.  You should be able to look at your picture of your board and your system-level block diagram and understand what is going on with your board. Not every line needs to be drawn though (like ground lines should NOT be on the block diagram).
+- [ ] A (complete) schematic of your completed system (**IN ALTIUM**)
 - [ ] A screenshot of your (battery, 5V, and 3.3V) voltage readings from your Arduino (serial monitor) on your power board.
-- [ ] Nice plots that show data from your completed board going into the cold chamber for at least 5 minutes.  The data should be calibrated with plots in actual geophysical units, including time (in minutes).
-- [ ] Discuss whether the battery voltaged changed as it got colder. Is there any relationship between temperature and battery voltage?
+- [ ] Nice plots that show data from your completed board going into the cold chamber for at least 5 minutes.  The data should be calibrated with plots in actual geophysical units, including time (in minutes). **For simplicity, any CSV files should print voltages, and MATLAB should perform the conversions to geophysical units.**
+- [ ] Discuss whether the battery voltages changed as it got colder. Is there any relationship between temperature and battery voltage?
 
 To put said content into a PDF, it is suggested you create a new Google Doc ([docs.new](https://docs.new)) and paste your images and write any text in the document. Export/Download this document as a PDF and upload it. **DO NOT SUBMIT A GOOGLE DOC FILE OR SPREADSHEET FILES.**
 
