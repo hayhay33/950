@@ -18,6 +18,16 @@ Note: While it is okay to work next to someone else to accomplish this goal and 
   - [Resources](#resources)
   - [Getting Started](#getting-started)
   - [Procedure](#procedure)
+   - [Starting the Project](#starting-the-project)
+   - [Adding relevant documents](#adding-relevant-documents)
+   - [Using key shortcuts](#using-key-shortcuts)
+   - [Some common shortcuts](#some-common-shortcuts)
+   - [Circuit we are building](#circuit-we-are-building)
+   - [Back to building](#back-to-building)
+   - [Connecting components](#connecting-components)
+   - [Some schematic pointers](#some-schematic-pointers)
+   - [Finishing up schematic design](#finishing-up-schematic-design)
+   - [Saving and compiling schematic](#saving-and-compiling-schematic)
   - [Submission](#submission)
 
 ## Resources
