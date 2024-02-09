@@ -15,9 +15,9 @@ Note: While it is okay to work next to someone else to accomplish this goal and 
 
 - [Lab 1b: Creating an Altium Schematic](#lab-1b-creating-an-altium-schematic)
     - [Contents](#contents)
-        - [Resources](#resources)
-        - [Getting Started](#getting-started)
-        - [Procedure](#procedure)
+    - [Resources](#resources)
+    - [Getting Started](#getting-started)
+    - [Procedure](#procedure)
         - [Starting the Project](#starting-the-project)
         - [Adding relevant documents](#adding-relevant-documents)
         - [Using key shortcuts](#using-key-shortcuts)
