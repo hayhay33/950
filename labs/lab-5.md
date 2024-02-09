@@ -44,7 +44,7 @@ IMPORTANT: We recommend saving intermediate Arduino codes, so that if something 
 IMPORTANT: When we are dealing with serial communication and loading the Arduino with a lot of memory, which we are doing today, our Arduinos can sometimes ”freakout”, and become stuck. The way that we often solve this problem is to unplug the Arduino, and load the ”blink.ino” program into the Arduino IDE. We then plug in the Arduino and quickly try to load the blink code (make sure the right port is selected, since when you unplug and plug in the Arduino, your computer can change the port). This often stops the Arduino from misbehaving, and we can try to upload the other code.
 </div>
 
-[GPS Schematic](/media/gps-schematic-lab5.png)
+![GPS Schematic](/media/gps-schematic-lab5.png)
 
 Schematic for the connections between the Arduino and GPS shown above.
 
@@ -52,7 +52,7 @@ Schematic for the connections between the Arduino and GPS shown above.
 
 The GPS operates on a 3.3V voltage and sends the digital signals with a maximum voltage of 3.3V on its communication lines. Our Arduino, however, reads digital signals of either 0V or 5V. This means that we may not be able to read the 3.3V signals from the GPS, and thus we can’t communicate with it directly. We will use a logic Level-Shifter to convert from 3.3V to 5.0V. This Level-Shifter will take the digital 3.3V logic of the GPS and convert it into 5.0V logic of the Arduino (it can also do the reverse as well). The Level-Shifter is shown below. It is actually a generic device in that it can shift between two different arbitrary voltages. For our application, these voltages are 5.0V and 3.3V. In order to do this, we have to provide the level-shifter these voltages, therefore, it requires references to (read: electrical connections to) the two voltages that you’re trying to convert between – in our case, 5V on the high voltage (HV) pin, and 3.3V on the low voltage (LV) pin. Since there are two references, there are two grounds, one on either side of this device, that both need to be connected to Arduino ground.
 
-[Level Shifter](/media/level-shifter-lab5.png)
+![Level Shifter](/media/level-shifter-lab5.png)
 
 The level-shifter component you will be using today is shown above.
 
