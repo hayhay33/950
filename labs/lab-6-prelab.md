@@ -5,10 +5,6 @@ latex: true
 
 # Lab 6 Prelab: Altium Schematic to PCB
 
-<div class="primer-spec-callout danger" markdown="1">
-
-</div>
-
 ## Contents 
 
 - [Lab 6 Prelab: Altium Schematic to PCB](#lab-6-prelab-altium-schematic-to-pcb)
