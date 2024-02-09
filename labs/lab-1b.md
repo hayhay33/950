@@ -26,6 +26,8 @@ For this lab, you will need:
 
 - [ ] A CAEN computer, or a computer running UofM VMWare to access Altium software.
 - [ ] [Altium libraries .zip file](https://drive.google.com/file/d/1JMCNjsRCwUEqwYapCFaCCkwo2zHAycD3/view?usp=drive_link) (you will need to unzip before using)
+- [ ] [Spreadsheet of Footprints](https://drive.google.com/file/d/1tsC8cM-wiYfIB25BBM7o7ymhQ4F3gtD8/view?usp=sharing)
+- [ ] [Second Spreadsheet of Footprints](https://drive.google.com/file/d/1LVTbnMMa6W0KI2mwZwTfUbNu1QJWeqjq/view?usp=sharing)
 
 ## Getting Started
 
@@ -139,7 +141,7 @@ them.
     - Miscellaneous Devices
     - Miscellaneous Connectors
     - ENGR100Pcb
-1. Select the correct footprint corresponding the spreadsheet provided (Canvas > Lab Files > Altium Resources) to ensure we have the correctly sized component for you when soldering
+1. Select the correct footprint corresponding the spreadsheets provided (Canvas > Lab Files > Altium Resources) to ensure we have the correctly sized component for you when soldering
 1. Click “OK” (x3)
 
 #### Saving and compiling schematic
