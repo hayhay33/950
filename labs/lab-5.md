@@ -106,7 +106,6 @@ Using Matlab (or python), make a plot of latitude vs time, longitude vs time, an
 
 Take some of the latitude and longitude output from the GPS (at least 4 points) and manually put it into a google maps file as either lines or pins. Show these points on the google map and take a screenshot of this.
 
-
 **Submit these with your postlab.**
 
 ## Post Lab Questions
