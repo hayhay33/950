@@ -31,7 +31,8 @@ A collection of useful cheat-sheets and diagrams you may find yourself referring
 - [ ] Exit out of the Arduino software and reopen it (make sure to close ALL open software windows).  
 - [ ] Try a different Arduino or Cord.
 - [ ] Restart your computer.
-- If your Arduino is still not functioning after trying all of these steps, call an instructor over for help!
+
+If your Arduino is still not functioning after trying all of these steps, call an instructor over for help!
 
 ## Arduino Nano Pinout
 
